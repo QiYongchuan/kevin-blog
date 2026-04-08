@@ -1,0 +1,372 @@
+3:I[4707,[],""]
+5:I[6423,[],""]
+6:I[9294,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"Providers"]
+7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","494","static/chunks/494-1aed5f4e80c0c666.js","246","static/chunks/app/post/%5Bid%5D/page-6bcd36b0f138d355.js"],""]
+8:I[7683,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"default"]
+4:["id","147","d"]
+0:["Eg-L6vOozAOdZxTY2VGFL",[[["",{"children":["post",{"children":[["id","147","d"],{"children":["__PAGE__?{\"id\":\"147\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","147","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/0a68f07cce603130.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"defer":true,"src":"https://cloud.umami.is/script.js","data-website-id":"YOUR_UMAMI_WEBSITE_ID"}]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"Kevin"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"文章"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"项目"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"关于"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 Kevin. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
+a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","494","static/chunks/494-1aed5f4e80c0c666.js","246","static/chunks/app/post/%5Bid%5D/page-6bcd36b0f138d355.js"],"default"]
+c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","494","static/chunks/494-1aed5f4e80c0c666.js","246","static/chunks/app/post/%5Bid%5D/page-6bcd36b0f138d355.js"],"default"]
+b:T1d29,# Tailscale + SSH 多设备并网完整教程
+
+**适用人群**：完全小白
+**目标**：让多台设备（Windows、macOS、Linux）通过 Tailscale 组网，实现双向 SSH 免密访问
+**工具**：Claude Code + 命令行
+
+---
+
+## 快速检查清单
+
+开始前确保：
+- [ ] 所有设备都已安装 Tailscale 并登录同一账号
+- [ ] 了解如何使用 Claude Code 执行命令
+- [ ] 有设备的管理员权限
+
+---
+
+## 第一步：确认 Tailscale 组网
+
+### 1.1 在所有设备上查看 Tailscale 状态
+
+**Windows / PowerShell:**
+```powershell
+tailscale status
+```
+
+**macOS / Linux:**
+```bash
+tailscale status
+```
+
+### 1.2 记录设备信息
+
+创建一个设备清单（示例）：
+
+| 设备名 | Tailscale IP | 系统 | 用户名 |
+|--------|--------------|------|--------|
+| laptop | 100.91.53.84 | Windows | user1 |
+| macmini | 100.80.153.60 | macOS | user2 |
+| server | 100.94.2.125 | Linux | root |
+
+**获取用户名命令：**
+```bash
+# Windows
+$env:USERNAME
+
+# macOS/Linux
+whoami
+```
+
+---
+
+## 第二步：生成 SSH 密钥对
+
+### 2.1 检查是否已有密钥
+
+```bash
+# Windows/macOS/Linux
+ls ~/.ssh/id_ed25519*
+```
+
+**如果已存在**：跳过此步
+**如果不存在**：继续执行
+
+### 2.2 生成新密钥
+
+```bash
+ssh-keygen -t ed25519 -C "你的邮箱或标识"
+```
+
+**一路按回车**（使用默认路径，空密码）
+
+---
+
+## 第三步：配置免密登录
+
+### 核心理解
+
+| 系统 | 公钥存储位置 |
+|------|--------------|
+| macOS/Linux | `~/.ssh/authorized_keys` |
+| **Windows** | `C:\ProgramData\ssh\administrators_authorized_keys` ⚠️ |
+
+### 3.1 场景一：macOS/Linux → macOS/Linux
+
+**假设**：设备 A (100.x.x.1) 要免密登录设备 B (100.x.x.2)
+
+**在设备 A 上执行：**
+```bash
+# 复制公钥到目标设备
+ssh-copy-id username@100.x.x.2
+```
+
+**输入一次密码后永久生效**
+
+### 3.2 场景二：macOS/Linux → Windows
+
+**假设**：Mac (100.80.153.60) 要免密登录 Windows (100.91.53.84)
+
+**方法 1：使用 ssh-copy-id（推荐）**
+```bash
+# 在 Mac 上执行
+ssh-copy-id user@100.91.53.84
+```
+
+**方法 2：手动复制（如果 ssh-copy-id 失败）**
+
+在 Mac 上获取公钥：
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+在 Windows 上（管理员 PowerShell）：
+```powershell
+# 创建目录（如果不存在）
+New-Item -ItemType Directory -Force -Path "C:\ProgramData\ssh"
+
+# 追加公钥（替换 <公钥内容>）
+Add-Content -Path "C:\ProgramData\ssh\administrators_authorized_keys" -Value "<公钥内容>" -Force
+
+# 重启 SSH 服务
+Restart-Service sshd
+```
+
+### 3.3 场景三：Windows → macOS/Linux
+
+**在 Windows 上执行：**
+```powershell
+# 复制公钥到目标
+type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh user@100.x.x.x "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+**输入一次密码后永久生效**
+
+### 3.4 场景四：Windows → Windows
+
+**在源 Windows 上获取公钥：**
+```powershell
+cat $env:USERPROFILE\.ssh\id_ed25519.pub
+```
+
+**在目标 Windows 上（管理员 PowerShell）：**
+```powershell
+Add-Content -Path "C:\ProgramData\ssh\administrators_authorized_keys" -Value "<公钥内容>" -Force
+Restart-Service sshd
+```
+
+---
+
+## 第四步：验证免密登录
+
+### 4.1 基础测试
+
+```bash
+# 测试免密连接
+ssh -o BatchMode=yes user@目标IP "echo 免密成功"
+```
+
+**成功输出**：`免密成功`
+**失败输出**：`Permission denied`
+
+### 4.2 实际连接测试
+
+```bash
+# 实际连接
+ssh user@目标IP
+```
+
+**如果不需要输入密码 → 配置成功 ✅**
+
+---
+
+## 第五步：（可选）自动化密码输入
+
+如果 ssh-copy-id 需要密码且无法手动输入，使用 expect：
+
+**在 macOS/Linux 上：**
+```bash
+# 安装 expect（如果未安装）
+brew install expect  # macOS
+# 或
+sudo apt install expect  # Ubuntu/Debian
+
+# 自动化脚本
+cat << 'EOF' | expect
+set timeout 30
+spawn ssh-copy-id user@目标IP
+expect "password:" { send "你的密码\r" }
+expect eof
+EOF
+```
+
+---
+
+## 故障排查速查表
+
+| 问题 | 可能原因 | 解决方法 |
+|------|----------|----------|
+| `Permission denied` | 公钥未正确添加 | 检查目标设备的 authorized_keys 文件 |
+| Windows 免密失败 | 公钥位置错误 | 确认在 `C:\ProgramData\ssh\administrators_authorized_keys` |
+| Windows 写入失败 | 权限不足 | 使用管理员 PowerShell |
+| `No route to host` | Tailscale 未连接 | 检查 `tailscale status` |
+| `Connection refused` | SSH 服务未启动 | Windows: `Start-Service sshd` <br> Mac: `sudo systemsetup -setremotelogin on` |
+
+### Windows 常见问题
+
+**检查 SSH 服务状态：**
+```powershell
+Get-Service sshd
+```
+
+**如果未运行：**
+```powershell
+Start-Service sshd
+Set-Service sshd -StartupType Automatic
+```
+
+**检查公钥文件权限：**
+```powershell
+icacls "C:\ProgramData\ssh\administrators_authorized_keys"
+# 应显示：Administrators:(F) 和 SYSTEM:(F)
+```
+
+**修复权限：**
+```powershell
+icacls "C:\ProgramData\ssh\administrators_authorized_keys" /inheritance:r
+icacls "C:\ProgramData\ssh\administrators_authorized_keys" /grant "Administrators:F"
+icacls "C:\ProgramData\ssh\administrators_authorized_keys" /grant "SYSTEM:F"
+```
+
+### macOS/Linux 常见问题
+
+**检查 SSH 权限：**
+```bash
+ls -la ~/.ssh/authorized_keys
+# 应该是：-rw------- (600)
+```
+
+**修复权限：**
+```bash
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+```
+
+---
+
+## 快速配置模板（复制粘贴用）
+
+### 模板 A：两台 macOS/Linux 互连
+
+```bash
+# 设备 1 → 设备 2
+ssh-copy-id user2@设备2的IP
+
+# 设备 2 → 设备 1
+ssh-copy-id user1@设备1的IP
+```
+
+### 模板 B：Mac → Windows
+
+```bash
+# 在 Mac 上
+ssh-copy-id windows_user@Windows的IP
+```
+
+### 模板 C：Windows → Mac
+
+```powershell
+# 在 Windows 上
+type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh mac_user@Mac的IP "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+---
+
+## 验证清单
+
+完成后测试：
+
+```bash
+# 从设备 A 连接设备 B
+ssh user@设备B的IP "hostname"
+
+# 从设备 B 连接设备 A
+ssh user@设备A的IP "hostname"
+
+# 如果都返回主机名，配置成功！
+```
+
+---
+
+## 进阶配置（可选）
+
+### 配置 SSH 别名
+
+编辑 `~/.ssh/config`（或 Windows 的 `C:\Users\你的用户名\.ssh\config`）：
+
+```
+Host macmini
+    HostName 100.80.153.60
+    User qyc
+
+Host windows
+    HostName 100.91.53.84
+    User Qyc
+
+Host server
+    HostName 100.94.2.125
+    User root
+```
+
+**之后只需：**
+```bash
+ssh macmini
+ssh windows
+ssh server
+```
+
+### 禁用密码登录（仅允许密钥）
+
+**在目标设备上：**
+
+```bash
+# 编辑 sshd_config
+sudo nano /etc/ssh/sshd_config  # macOS/Linux
+# 或
+notepad C:\ProgramData\ssh\sshd_config  # Windows
+```
+
+**修改：**
+```
+PasswordAuthentication no
+```
+
+**重启 SSH 服务：**
+```bash
+sudo systemctl restart sshd  # Linux
+sudo launchctl stop com.openssh.sshd && sudo launchctl start com.openssh.sshd  # macOS
+Restart-Service sshd  # Windows
+```
+
+---
+
+## 总结
+
+1. **安装 Tailscale** → 所有设备在同一虚拟网络
+2. **生成 SSH 密钥** → 每台设备生成 id_ed25519
+3. **交换公钥** → 复制到目标设备的 authorized_keys
+4. **验证** → 测试免密连接
+
+**核心要点：**
+- macOS/Linux 公钥在 `~/.ssh/authorized_keys`
+- **Windows 公钥在 `C:\ProgramData\ssh\administrators_authorized_keys`**
+- 权限必须正确设置
+- Windows 需要重启 sshd 服务
+
+---
+
+*教程版本：v1.0*
+*最后更新：2026-03-26*
+*问题反馈：查看故障排查速查表*
+2:["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回"]}],["$","header",null,{"className":"mb-12","children":[["$","h1",null,{"className":"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight","children":"Tailscale + SSH 多设备并网完整教程"}],["$","div",null,{"className":"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500","children":[["$","time",null,{"className":"tabular-nums","children":"2026/03/26"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","Kill-bugs",{"className":"text-gray-400 dark:text-gray-500","children":["#","Kill-bugs"]}],["$","span","notes",{"className":"text-gray-400 dark:text-gray-500","children":["#","notes"]}]]}]]}]]}],["$","article",null,{"className":"prose dark:prose-invert max-w-none","children":["$","$La",null,{"content":"$b"}]}],["$","$Lc",null,{"postId":"147"}],["$","div",null,{"className":"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800","children":["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回首页"]}]}]]}]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Tailscale + SSH 多设备并网完整教程 - Kevin's Blog"}],["$","meta","3",{"name":"description","content":"Build fast, share fast. 独立开发者、自媒体人、AI魔法师。"}],["$","link","4",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+1:null
