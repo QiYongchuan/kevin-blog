@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin's Blog",
+  title: "多多的博客",
   description: "Build fast, share fast. 独立开发者、自媒体人、AI魔法师。",
 };
 
@@ -29,11 +29,17 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
-        {/* Umami Analytics - 替换为你的 Umami 实例地址 */}
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"></script>
         <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="YOUR_UMAMI_WEBSITE_ID"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0CW52HXX9M');
+            `,
+          }}
         />
       </head>
       <body
@@ -45,7 +51,7 @@ export default function RootLayout({
             <header className="border-b border-gray-200 dark:border-gray-800">
               <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 <Link href="/" className="text-xl font-semibold hover:opacity-70 transition-opacity">
-                  Kevin
+                  多多
                 </Link>
                 <nav className="flex items-center gap-6">
                   <Link href="/" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
@@ -73,7 +79,7 @@ export default function RootLayout({
             {/* Footer */}
             <footer className="border-t border-gray-200 dark:border-gray-800 py-8">
               <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400">
-                <p>© 2025 Kevin. Build fast, share fast.</p>
+                <p>© 2025 多多. Build fast, share fast.</p>
               </div>
             </footer>
           </div>

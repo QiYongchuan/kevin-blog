@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { Highlight, themes } from 'prism-react-renderer';
 
 interface MarkdownRendererProps {
@@ -14,6 +15,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
     <div className="prose dark:prose-invert max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           code({ inline, className, children, ...props }: { inline?: boolean; className?: string; children?: React.ReactNode }) {
             const match = /language-(\w+)/.exec(className || '');
@@ -100,6 +102,16 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           hr: () => (
             <hr className="my-8 border-gray-200 dark:border-gray-700" />
+          ),
+          img: ({ src, alt, width, height }) => (
+            <img
+              src={src}
+              alt={alt || ''}
+              width={width}
+              height={height}
+              className="max-w-full h-auto rounded-lg my-4"
+              loading="lazy"
+            />
           ),
         }}
       >

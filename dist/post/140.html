@@ -1,305 +1,244 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/0a68f07cce603130.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-45f3ba01ad733075.js"/><script src="/_next/static/chunks/fd9d1056-66f00bd55a10c1ac.js" async=""></script><script src="/_next/static/chunks/117-74e92f823446cbd0.js" async=""></script><script src="/_next/static/chunks/main-app-1e9cae389037da54.js" async=""></script><script src="/_next/static/chunks/972-66d51a7cc4f97c94.js" async=""></script><script src="/_next/static/chunks/app/layout-38aa4a181ad2d773.js" async=""></script><script src="/_next/static/chunks/494-1aed5f4e80c0c666.js" async=""></script><script src="/_next/static/chunks/app/post/%5Bid%5D/page-6bcd36b0f138d355.js" async=""></script><title>X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档 - Kevin&#x27;s Blog</title><meta name="description" content="Build fast, share fast. 独立开发者、自媒体人、AI魔法师。"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script defer="" src="https://cloud.umami.is/script.js" data-website-id="YOUR_UMAMI_WEBSITE_ID"></script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"><script>((e,t,r,n,o,l,a,u)=>{let i=document.documentElement,s=["light","dark"];function c(t){(Array.isArray(e)?e:[e]).forEach(e=>{let r="class"===e,n=r&&l?o.map(e=>l[e]||e):o;r?(i.classList.remove(...n),i.classList.add(l&&l[t]?l[t]:t)):i.setAttribute(e,t)}),u&&s.includes(t)&&(i.style.colorScheme=t)}if(n)c(n);else try{let e=localStorage.getItem(t)||r,n=a&&"system"===e?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":e;c(n)}catch(e){}})("class","theme","system",null,["light","dark"],null,true,true)</script><div class="min-h-screen flex flex-col"><header class="border-b border-gray-200 dark:border-gray-800"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"><a class="text-xl font-semibold hover:opacity-70 transition-opacity" href="/">Kevin</a><nav class="flex items-center gap-6"><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/">文章</a><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/thoughts">Thoughts</a><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/projects">项目</a><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/about">关于</a><button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="切换主题"><div class="w-5 h-5"></div></button></nav></div></header><main class="flex-1"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12"><a class="inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors" href="/"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>返回</a><header class="mb-12"><h1 class="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight">X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档</h1><div class="flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500"><time class="tabular-nums">2025/11/10</time><div class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">#<!-- -->notes</span><span class="text-gray-400 dark:text-gray-500">#<!-- -->项目记录</span><span class="text-gray-400 dark:text-gray-500">#<!-- -->记录</span></div></div></header><article class="prose dark:prose-invert max-w-none"><div class="prose dark:prose-invert max-w-none">&lt;html&gt;
-&lt;body&gt;
-&lt;!--StartFragment--&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档&lt;/h1&gt;
-&lt;h2&gt;📋 项目概述&lt;/h2&gt;
-&lt;p&gt;本项目实现了一个 n8n 自动化工作流，每天定时将 X(Twitter) 账号的原创推文和转发推文备份到 Notion 数据库和飞书多维表格中。&lt;/p&gt;
-&lt;h3&gt;功能特性&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;✅ 每天早上 7 点自动运行&lt;/li&gt;
-&lt;li&gt;✅ 获取昨天的所有推文（原创 + 转发）&lt;/li&gt;
-&lt;li&gt;✅ 自动排除回复内容&lt;/li&gt;
-&lt;li&gt;✅ 同步到 Notion 和飞书&lt;/li&gt;
-&lt;li&gt;✅ 支持代理访问 Twitter API&lt;/li&gt;
-&lt;li&gt;✅ 完善的错误处理和日志记录&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;🏗️ 系统架构&lt;/h2&gt;
-&lt;h3&gt;工作流节点图&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;每天早7点触发
-    ↓
-计算时间范围（昨天 00:00 - 今天 00:00）
-    ↓
-获取推文数据（通过代理访问 Twitter API）
-    ↓
-处理推文数据（分离原创/转发，数据清洗）
-    ↓
-过滤有效数据（确保数据完整性）
-    ↓
-    ├─→ 写入 Notion（单条写入）
-    │
-    └─→ 获取飞书 Token
-            ↓
-        准备飞书批量数据
-            ↓
-        批量写入飞书（一次写入所有）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2&gt;🐛 开发过程中的问题与解决方案&lt;/h2&gt;
-&lt;h3&gt;问题 1：合并节点配置错误&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;错误信息：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;You need to define at least one pair of fields in &quot;Fields to Match&quot; to match on
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;原因分析：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用了 &lt;code&gt;mode: &quot;combine&quot;&lt;/code&gt; + &lt;code&gt;combinationMode: &quot;mergeByPosition&quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;这种模式需要定义匹配字段才能合并数据&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;parameters&quot;: {
-    &quot;mode&quot;: &quot;append&quot;  // 改为追加模式，不需要匹配字段
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;经验总结：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;combine&lt;/code&gt; 模式：用于按字段匹配合并（需要配置匹配字段）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;append&lt;/code&gt; 模式：简单追加所有数据（适合本场景）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3&gt;问题 2：Twitter API 速率限制（429 错误）&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;错误信息：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;status&quot;: 429,
-  &quot;title&quot;: &quot;Too Many Requests&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;原因分析：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;初始设计分别调用两次 API（原创推文 + 转发推文）&lt;/li&gt;
-&lt;li&gt;Twitter API v2 有严格的速率限制&lt;/li&gt;
-&lt;li&gt;Free tier 每月只有 1500 条推文读取配额&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;
-优化为单次 API 调用：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// 一次性获取所有推文（不排除转发）
-url: &quot;https://api.twitter.com/2/users/{user_id}/tweets&quot;
-queryParameters: {
-  exclude: &quot;replies&quot;,  // 只排除回复
-  tweet.fields: &quot;created_at,public_metrics,referenced_tweets&quot;
-}<!-- -->
-<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">// 在代码节点中分离原创和转发
-const isRetweet = tweet.referenced_tweets?.some(ref =&gt; ref.type === &#x27;retweeted&#x27;);
-<!-- -->&lt;/code&gt;<!-- -->&lt;/pre&gt;</p>
-<!-- -->&lt;p&gt;&lt;strong&gt;经验总结：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;优先使用单次 API 调用获取所有数据&lt;/li&gt;
-&lt;li&gt;在代码中进行数据分类和过滤&lt;/li&gt;
-&lt;li&gt;API 调用次数：从 2 次降低到 1 次（减少 50%）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3&gt;问题 3：代理配置缺失&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;问题描述：&lt;/strong&gt;
-国内网络环境无法直接访问 Twitter API&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;
-在 HTTP Request 节点中添加代理配置：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;options&quot;: {
-    &quot;proxy&quot;: &quot;http://127.0.0.1:7890&quot;,
-    &quot;timeout&quot;: 30000
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;注意事项：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;确保本地代理软件正在运行&lt;/li&gt;
-&lt;li&gt;测试代理：&lt;code&gt;curl -x http://127.0.0.1:7890 https://api.twitter.com&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;根据实际情况修改端口号&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3&gt;问题 4：飞书认证 Token 过期&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;问题描述：&lt;/strong&gt;
-初始配置使用硬编码的 Bearer Token，很快过期失效&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;错误方案：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;headers&quot;: {
-    &quot;Authorization&quot;: &quot;Bearer u-ef55Oywvd6eW9f7H4uMP0911jQYw10qphMG050MGwB8D&quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;正确方案：&lt;/strong&gt;
-使用飞书应用凭证动态获取 Token：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;获取 Token 节点：&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;method&quot;: &quot;POST&quot;,
-  &quot;url&quot;: &quot;https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal&quot;,
-  &quot;bodyParameters&quot;: {
-    &quot;app_id&quot;: &quot;cli_a985d1564eb9900b&quot;,
-    &quot;app_secret&quot;: &quot;m83GwLY8ytgaX03E5wxapiIVvjzSvlPP&quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;&lt;strong&gt;使用动态 Token：&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
-  &quot;headers&quot;: {
-    &quot;Authorization&quot;: &quot;Bearer {{ $(&#x27;获取飞书Token&#x27;).item.json.tenant_access_token }}&quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;经验总结：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;永远不要硬编码 Token&lt;/li&gt;
-&lt;li&gt;使用应用凭证动态获取，保证长期有效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3&gt;问题 5：推文内容导致 JSON 解析错误&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;错误信息：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;JSON parameter needs to be valid JSON
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;原因分析：&lt;/strong&gt;
-推文内容包含特殊字符（换行符、制表符、引号等）破坏 JSON 格式：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// 问题示例
-&quot;Content&quot;: &quot;这是一条推文
-包含换行符&quot;  // ❌ 导致 JSON 解析失败
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;初次尝试（失败）：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// 转义特殊字符
-cleanText = cleanText
-  .replace(/\n/g, &#x27;\\n&#x27;)
-  .replace(/&quot;/g, &#x27;\\&quot;&#x27;)
-// 问题：在 n8n 表达式中仍然可能出错
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;最终方案：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// 直接移除或替换特殊字符为空格
-cleanText = cleanText
-  .replace(/[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F]/g, &#x27;&#x27;) // 移除控制字符
-  .replace(/\r\n/g, &#x27; &#x27;)  // Windows 换行
-  .replace(/\r/g, &#x27; &#x27;)    // Mac 换行
-  .replace(/\n/g, &#x27; &#x27;)    // Unix 换行
-  .replace(/\t/g, &#x27; &#x27;)    // 制表符
-  .trim();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;经验总结：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;对于用户输入的文本，永远不要假设格式&lt;/li&gt;
-&lt;li&gt;在插入 JSON 前必须清理数据&lt;/li&gt;
-&lt;li&gt;简单替换为空格比复杂转义更可靠&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3&gt;问题 6：飞书写入效率低下&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;问题描述：&lt;/strong&gt;
-初始设计使用单条写入，15 条推文需要调用 15 次 API&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;低效方案：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// 为每条推文单独调用 API
-POST /records
-{
-  &quot;fields&quot;: { ... }  // 单条记录
-}
-// 重复 15 次
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;优化方案：&lt;/strong&gt;
-使用飞书批量创建 API：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// 一次性写入所有记录
-POST /records/batch_create
-{
-  &quot;records&quot;: [
-    { &quot;fields&quot;: { ... } },  // 记录 1
-    { &quot;fields&quot;: { ... } },  // 记录 2
-    // ... 15 条记录
-  ]
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;性能对比：&lt;/strong&gt;&lt;/p&gt;<!-- -->
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/627c536f2f2b9e7d.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-45f3ba01ad733075.js"/><script src="/_next/static/chunks/fd9d1056-66f00bd55a10c1ac.js" async=""></script><script src="/_next/static/chunks/117-74e92f823446cbd0.js" async=""></script><script src="/_next/static/chunks/main-app-1e9cae389037da54.js" async=""></script><script src="/_next/static/chunks/972-66d51a7cc4f97c94.js" async=""></script><script src="/_next/static/chunks/app/layout-38aa4a181ad2d773.js" async=""></script><script src="/_next/static/chunks/196-f2bfcbb86a691470.js" async=""></script><script src="/_next/static/chunks/app/post/%5Bid%5D/page-8b7f24c82cd843a5.js" async=""></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"></script><title>X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档 - Kevin&#x27;s Blog</title><meta name="description" content="Build fast, share fast. 独立开发者、自媒体人、AI魔法师。"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0CW52HXX9M');
+            </script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"><script>((e,t,r,n,o,l,a,u)=>{let i=document.documentElement,s=["light","dark"];function c(t){(Array.isArray(e)?e:[e]).forEach(e=>{let r="class"===e,n=r&&l?o.map(e=>l[e]||e):o;r?(i.classList.remove(...n),i.classList.add(l&&l[t]?l[t]:t)):i.setAttribute(e,t)}),u&&s.includes(t)&&(i.style.colorScheme=t)}if(n)c(n);else try{let e=localStorage.getItem(t)||r,n=a&&"system"===e?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":e;c(n)}catch(e){}})("class","theme","system",null,["light","dark"],null,true,true)</script><div class="min-h-screen flex flex-col"><header class="border-b border-gray-200 dark:border-gray-800"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"><a class="text-xl font-semibold hover:opacity-70 transition-opacity" href="/">多多</a><nav class="flex items-center gap-6"><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/">文章</a><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/thoughts">Thoughts</a><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/projects">项目</a><a class="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="/about">关于</a><button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="切换主题"><div class="w-5 h-5"></div></button></nav></div></header><main class="flex-1"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12"><a class="inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors" href="/"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>返回</a><header class="mb-12"><h1 class="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight">X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档</h1><div class="flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500"><time class="tabular-nums">2025/11/10</time><div class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">#<!-- -->notes</span><span class="text-gray-400 dark:text-gray-500">#<!-- -->项目记录</span><span class="text-gray-400 dark:text-gray-500">#<!-- -->记录</span></div></div></header><article class="prose dark:prose-invert max-w-none"><div class="prose dark:prose-invert max-w-none">
+
+<h1 class="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档</h1>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">📋 项目概述</h2>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">本项目实现了一个 n8n 自动化工作流，每天定时将 X(Twitter) 账号的原创推文和转发推文备份到 Notion 数据库和飞书多维表格中。</p>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">功能特性</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>✅ 每天早上 7 点自动运行</li>
+<li>✅ 获取昨天的所有推文（原创 + 转发）</li>
+<li>✅ 自动排除回复内容</li>
+<li>✅ 同步到 Notion 和飞书</li>
+<li>✅ 支持代理访问 Twitter API</li>
+<li>✅ 完善的错误处理和日志记录</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">🏗️ 系统架构</h2>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">工作流节点图</h3>
+<pre><pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">每天早7点触发</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    ↓</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">计算时间范围（昨天 00:00 - 今天 00:00）</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    ↓</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">获取推文数据（通过代理访问 Twitter API）</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    ↓</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">处理推文数据（分离原创/转发，数据清洗）</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    ↓</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">过滤有效数据（确保数据完整性）</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    ↓</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    ├─→ 写入 Notion（单条写入）</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    │</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    └─→ 获取飞书 Token</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">            ↓</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">        准备飞书批量数据</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">            ↓</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">        批量写入飞书（一次写入所有）</span></div></pre></pre>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">🐛 开发过程中的问题与解决方案</h2>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">问题 1：合并节点配置错误</h3>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>错误信息：</strong></p>
+<pre><pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">You need to define at least one pair of fields in &quot;Fields to Match&quot; to match on</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>原因分析：</strong></p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>使用了 <pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">mode: &quot;combine&quot;</span></div></pre> + <pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">combinationMode: &quot;mergeByPosition&quot;</span></div></pre></li>
+<li>这种模式需要定义匹配字段才能合并数据</li>
+</ul>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>解决方案：</strong></p>
+<pre><pre class="prism-code language-json rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;parameters&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;mode&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;append&quot;</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 改为追加模式，不需要匹配字段</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>经验总结：</strong></p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li><pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">combine</span></div></pre> 模式：用于按字段匹配合并（需要配置匹配字段）</li>
+<li><pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">append</span></div></pre> 模式：简单追加所有数据（适合本场景）</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">问题 2：Twitter API 速率限制（429 错误）</h3>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>错误信息：</strong></p>
+<pre><pre class="prism-code language-json rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;status&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">429</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;title&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;Too Many Requests&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>原因分析：</strong></p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>初始设计分别调用两次 API（原创推文 + 转发推文）</li>
+<li>Twitter API v2 有严格的速率限制</li>
+<li>Free tier 每月只有 1500 条推文读取配额</li>
+</ul>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>解决方案：</strong>
+优化为单次 API 调用：</p>
+<pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 一次性获取所有推文（不排除转发）</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token literal-property property" style="color:rgb(128, 203, 196)">url</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;https://api.twitter.com/2/users/{user_id}/tweets&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token literal-property property" style="color:rgb(128, 203, 196)">queryParameters</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token literal-property property" style="color:rgb(128, 203, 196)">exclude</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;replies&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 只排除回复</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  tweet</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token property-access">fields</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;created_at,public_metrics,referenced_tweets&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre><p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 在代码节点中分离原创和转发</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token keyword" style="color:rgb(127, 219, 202)">const</span><span class="token plain"> isRetweet </span><span class="token operator" style="color:rgb(127, 219, 202)">=</span><span class="token plain"> tweet</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token property-access">referenced_tweets</span><span class="token operator" style="color:rgb(127, 219, 202)">?.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">some</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token parameter">ref</span><span class="token plain"> </span><span class="token arrow operator" style="color:rgb(127, 219, 202)">=&gt;</span><span class="token plain"> ref</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token property-access">type</span><span class="token plain"> </span><span class="token operator" style="color:rgb(127, 219, 202)">===</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27;retweeted&#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre></p></pre><p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"></p>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>经验总结：</strong></p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>优先使用单次 API 调用获取所有数据</li>
+<li>在代码中进行数据分类和过滤</li>
+<li>API 调用次数：从 2 次降低到 1 次（减少 50%）</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">问题 3：代理配置缺失</h3>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>问题描述：</strong>
+国内网络环境无法直接访问 Twitter API</p>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>解决方案：</strong>
+在 HTTP Request 节点中添加代理配置：</p>
+<pre><pre class="prism-code language-json rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;options&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;proxy&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;http://127.0.0.1:7890&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;timeout&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">30000</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>注意事项：</strong></p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>确保本地代理软件正在运行</li>
+<li>测试代理：<pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">curl -x http://127.0.0.1:7890 https://api.twitter.com</span></div></pre></li>
+<li>根据实际情况修改端口号</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">问题 4：飞书认证 Token 过期</h3>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>问题描述：</strong>
+初始配置使用硬编码的 Bearer Token，很快过期失效</p>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>错误方案：</strong></p>
+<pre><pre class="prism-code language-json rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;headers&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;Authorization&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;Bearer u-ef55Oywvd6eW9f7H4uMP0911jQYw10qphMG050MGwB8D&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>正确方案：</strong>
+使用飞书应用凭证动态获取 Token：</p>
+<ol class="list-decimal list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li><strong>获取 Token 节点：</strong></li>
+</ol>
+<pre><pre class="prism-code language-json rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;method&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;POST&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;url&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;bodyParameters&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;app_id&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;cli_a985d1564eb9900b&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;app_secret&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;m83GwLY8ytgaX03E5wxapiIVvjzSvlPP&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
+<ol class="list-decimal list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li><strong>使用动态 Token：</strong></li>
+</ol>
+<pre><pre class="prism-code language-json rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;headers&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token property" style="color:rgb(128, 203, 196)">&quot;Authorization&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&quot;Bearer {{ $(&#x27;获取飞书Token&#x27;).item.json.tenant_access_token }}&quot;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>经验总结：</strong></p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>永远不要硬编码 Token</li>
+<li>使用应用凭证动态获取，保证长期有效</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">问题 5：推文内容导致 JSON 解析错误</h3>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>错误信息：</strong></p>
+<pre><pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">JSON parameter needs to be valid JSON</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>原因分析：</strong>
+推文内容包含特殊字符（换行符、制表符、引号等）破坏 JSON 格式：</p>
+<pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 问题示例</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;Content&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> &quot;这是一条推文</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">包含换行符&quot;  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// ❌ 导致 JSON 解析失败</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>初次尝试（失败）：</strong></p>
+<pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 转义特殊字符</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">cleanText </span><span class="token operator" style="color:rgb(127, 219, 202)">=</span><span class="token plain"> cleanText</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">replace</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex escape">\n</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">g</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27;\\n&#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">replace</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex">&quot;</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">g</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27;\\&quot;&#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 问题：在 n8n 表达式中仍然可能出错</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>最终方案：</strong></p>
+<pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 直接移除或替换特殊字符为空格</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">cleanText </span><span class="token operator" style="color:rgb(127, 219, 202)">=</span><span class="token plain"> cleanText</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">replace</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex char-class char-class-punctuation punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token regex regex-source language-regex char-class range escape">\x00</span><span class="token regex regex-source language-regex char-class range range-punctuation operator" style="color:rgb(127, 219, 202)">-</span><span class="token regex regex-source language-regex char-class range escape">\x08</span><span class="token regex regex-source language-regex char-class range escape">\x0B</span><span class="token regex regex-source language-regex char-class range range-punctuation operator" style="color:rgb(127, 219, 202)">-</span><span class="token regex regex-source language-regex char-class range escape">\x0C</span><span class="token regex regex-source language-regex char-class range escape">\x0E</span><span class="token regex regex-source language-regex char-class range range-punctuation operator" style="color:rgb(127, 219, 202)">-</span><span class="token regex regex-source language-regex char-class range escape">\x1F</span><span class="token regex regex-source language-regex char-class escape">\x7F</span><span class="token regex regex-source language-regex char-class char-class-punctuation punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">g</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27;&#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 移除控制字符</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">replace</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex escape">\r</span><span class="token regex regex-source language-regex escape">\n</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">g</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27; &#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// Windows 换行</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">replace</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex escape">\r</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">g</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27; &#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain">    </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// Mac 换行</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">replace</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex escape">\n</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">g</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27; &#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain">    </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// Unix 换行</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">replace</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-source language-regex escape">\t</span><span class="token regex regex-delimiter">/</span><span class="token regex regex-flags">g</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27; &#x27;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain">    </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 制表符</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">trim</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>经验总结：</strong></p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>对于用户输入的文本，永远不要假设格式</li>
+<li>在插入 JSON 前必须清理数据</li>
+<li>简单替换为空格比复杂转义更可靠</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">问题 6：飞书写入效率低下</h3>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>问题描述：</strong>
+初始设计使用单条写入，15 条推文需要调用 15 次 API</p>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>低效方案：</strong></p>
+<pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 为每条推文单独调用 API</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token constant" style="color:rgb(130, 170, 255)">POST</span><span class="token plain"> </span><span class="token operator" style="color:rgb(127, 219, 202)">/</span><span class="token plain">records</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;fields&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token spread operator" style="color:rgb(127, 219, 202)">...</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 单条记录</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 重复 15 次</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>优化方案：</strong>
+使用飞书批量创建 API：</p>
+<pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 一次性写入所有记录</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token constant" style="color:rgb(130, 170, 255)">POST</span><span class="token plain"> </span><span class="token operator" style="color:rgb(127, 219, 202)">/</span><span class="token plain">records</span><span class="token operator" style="color:rgb(127, 219, 202)">/</span><span class="token plain">batch_create</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;records&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;fields&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token spread operator" style="color:rgb(127, 219, 202)">...</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 记录 1</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;fields&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token spread operator" style="color:rgb(127, 219, 202)">...</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 记录 2</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// ... 15 条记录</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>性能对比：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table><thead><tr><th>指标</th><th>单条写入</th><th>批量写入</th></tr></thead><tbody><tr><td>API 调用次数</td><td>15 次</td><td>1 次</td></tr><tr><td>总耗时</td><td>~15 秒</td><td>~1 秒</td></tr><tr><td>失败风险</td><td>高</td><td>低</td></tr></tbody></table>
-<!-- -->&lt;h3&gt;优化措施&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;✅ 合并 Twitter API 调用（2→1）&lt;/li&gt;
-&lt;li&gt;✅ 使用飞书批量 API（15→1）&lt;/li&gt;
-&lt;li&gt;✅ 优化数据处理逻辑&lt;/li&gt;
-&lt;li&gt;✅ 添加完善的错误处理&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2&gt;🚨 注意事项&lt;/h2&gt;
-&lt;h3&gt;1. API 配额管理&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Twitter Free tier：1500 条/月&lt;/li&gt;
-&lt;li&gt;合理设置 &lt;code&gt;max_results&lt;/code&gt;（建议 100）&lt;/li&gt;
-&lt;li&gt;监控 API 使用量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;2. 数据一致性&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;推文可能被删除&lt;/li&gt;
-&lt;li&gt;数据统计可能更新&lt;/li&gt;
-&lt;li&gt;定期清理重复数据&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;3. 安全性&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;不要在代码中硬编码密钥&lt;/li&gt;
-&lt;li&gt;使用 n8n 凭证管理&lt;/li&gt;
-&lt;li&gt;定期更新 Token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;4. 时区问题&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Twitter API 使用 UTC 时间&lt;/li&gt;
-&lt;li&gt;确保本地时间计算正确&lt;/li&gt;
-&lt;li&gt;考虑夏令时影响&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;🎯 未来优化方向&lt;/h2&gt;
-&lt;h3&gt;功能增强&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;[ ] 支持多账号备份&lt;/li&gt;
-&lt;li&gt;[ ] 添加图片/视频备份&lt;/li&gt;
-&lt;li&gt;[ ] 支持推文删除同步&lt;/li&gt;
-&lt;li&gt;[ ] 添加数据统计分析&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;技术优化&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;[ ] 实现增量备份（只获取新推文）&lt;/li&gt;
-&lt;li&gt;[ ] 添加重试机制&lt;/li&gt;
-&lt;li&gt;[ ] 优化错误通知（邮件/飞书消息）&lt;/li&gt;
-&lt;li&gt;[ ] 支持 Webhook 实时触发&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;📚 参考资料&lt;/h2&gt;
-&lt;h3&gt;官方文档&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.twitter.com/en/docs/twitter-api&quot;&gt;Twitter API v2 文档&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developers.notion.com/&quot;&gt;Notion API 文档&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://open.feishu.cn/document/&quot;&gt;飞书开放平台文档&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://docs.n8n.io/&quot;&gt;n8n 官方文档&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;相关资源&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.twitter.com/en/docs/twitter-api/rate-limits&quot;&gt;Twitter API 速率限制&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview&quot;&gt;飞书多维表格 API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://docs.n8n.io/code-examples/&quot;&gt;n8n Code 节点指南&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;🤝 贡献与反馈&lt;/h2&gt;
-&lt;p&gt;如果你在使用过程中遇到问题或有改进建议，欢迎：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提交 Issue&lt;/li&gt;
-&lt;li&gt;分享使用经验&lt;/li&gt;
-&lt;li&gt;贡献代码优化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2&gt;📝 版本历史&lt;/h2&gt;
-&lt;h3&gt;v1.0.0（最终版）&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;✅ 实现基础功能&lt;/li&gt;
-&lt;li&gt;✅ 优化性能（批量写入）&lt;/li&gt;
-&lt;li&gt;✅ 完善错误处理&lt;/li&gt;
-&lt;li&gt;✅ 添加详细日志&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;开发里程碑&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;初始设计（双 API 调用）&lt;/li&gt;
-&lt;li&gt;合并 API 优化&lt;/li&gt;
-&lt;li&gt;修复飞书认证&lt;/li&gt;
-&lt;li&gt;实现批量写入&lt;/li&gt;
-&lt;li&gt;文本清理优化&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;最后更新时间：&lt;/strong&gt; 2025-11-10&lt;br&gt;
-&lt;strong&gt;文档版本：&lt;/strong&gt; 1.0.0&lt;br&gt;
-&lt;strong&gt;维护状态：&lt;/strong&gt; ✅ 活跃维护中&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&lt;!--EndFragment--&gt;
-&lt;/body&gt;
-&lt;/html&gt;# X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档<!-- -->
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">优化措施</h3>
+<ol class="list-decimal list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>✅ 合并 Twitter API 调用（2→1）</li>
+<li>✅ 使用飞书批量 API（15→1）</li>
+<li>✅ 优化数据处理逻辑</li>
+<li>✅ 添加完善的错误处理</li>
+</ol>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">🚨 注意事项</h2>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">1. API 配额管理</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>Twitter Free tier：1500 条/月</li>
+<li>合理设置 <pre class="prism-code language-text rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token plain">max_results</span></div></pre>（建议 100）</li>
+<li>监控 API 使用量</li>
+</ul>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">2. 数据一致性</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>推文可能被删除</li>
+<li>数据统计可能更新</li>
+<li>定期清理重复数据</li>
+</ul>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">3. 安全性</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>不要在代码中硬编码密钥</li>
+<li>使用 n8n 凭证管理</li>
+<li>定期更新 Token</li>
+</ul>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">4. 时区问题</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>Twitter API 使用 UTC 时间</li>
+<li>确保本地时间计算正确</li>
+<li>考虑夏令时影响</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">🎯 未来优化方向</h2>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">功能增强</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>[ ] 支持多账号备份</li>
+<li>[ ] 添加图片/视频备份</li>
+<li>[ ] 支持推文删除同步</li>
+<li>[ ] 添加数据统计分析</li>
+</ul>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">技术优化</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>[ ] 实现增量备份（只获取新推文）</li>
+<li>[ ] 添加重试机制</li>
+<li>[ ] 优化错误通知（邮件/飞书消息）</li>
+<li>[ ] 支持 Webhook 实时触发</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">📚 参考资料</h2>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">官方文档</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li><a href="https://developer.twitter.com/en/docs/twitter-api" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Twitter API v2 文档</a></li>
+<li><a href="https://developers.notion.com/" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Notion API 文档</a></li>
+<li><a href="https://open.feishu.cn/document/" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">飞书开放平台文档</a></li>
+<li><a href="https://docs.n8n.io/" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">n8n 官方文档</a></li>
+</ul>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">相关资源</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li><a href="https://developer.twitter.com/en/docs/twitter-api/rate-limits" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Twitter API 速率限制</a></li>
+<li><a href="https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">飞书多维表格 API</a></li>
+<li><a href="https://docs.n8n.io/code-examples/" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">n8n Code 节点指南</a></li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">🤝 贡献与反馈</h2>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">如果你在使用过程中遇到问题或有改进建议，欢迎：</p>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>提交 Issue</li>
+<li>分享使用经验</li>
+<li>贡献代码优化</li>
+</ul>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">📝 版本历史</h2>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">v1.0.0（最终版）</h3>
+<ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>✅ 实现基础功能</li>
+<li>✅ 优化性能（批量写入）</li>
+<li>✅ 完善错误处理</li>
+<li>✅ 添加详细日志</li>
+</ul>
+<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">开发里程碑</h3>
+<ol class="list-decimal list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
+<li>初始设计（双 API 调用）</li>
+<li>合并 API 优化</li>
+<li>修复飞书认证</li>
+<li>实现批量写入</li>
+<li>文本清理优化</li>
+</ol>
+<hr class="my-8 border-gray-200 dark:border-gray-700"/>
+<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>最后更新时间：</strong> 2025-11-10<br/>
+<strong>文档版本：</strong> 1.0.0<br/>
+<strong>维护状态：</strong> ✅ 活跃维护中</p>
+
+# X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档
 <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">📋 项目概述</h2>
 <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">本项目实现了一个 n8n 自动化工作流，每天定时将 X(Twitter) 账号的原创推文和转发推文备份到 Notion 数据库和飞书多维表格中。</p>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">功能特性</h3>
@@ -413,6 +352,31 @@ POST /records/batch_create
 使用飞书批量创建 API：</p>
 <pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 一次性写入所有记录</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token constant" style="color:rgb(130, 170, 255)">POST</span><span class="token plain"> </span><span class="token operator" style="color:rgb(127, 219, 202)">/</span><span class="token plain">records</span><span class="token operator" style="color:rgb(127, 219, 202)">/</span><span class="token plain">batch_create</span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;records&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;fields&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token spread operator" style="color:rgb(127, 219, 202)">...</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 记录 1</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token string-property property" style="color:rgb(128, 203, 196)">&quot;fields&quot;</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span><span class="token spread operator" style="color:rgb(127, 219, 202)">...</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain">  </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 记录 2</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// ... 15 条记录</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></pre></pre>
 <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>性能对比：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table><thead><tr><th>指标</th><th>单条写入</th><th>批量写入</th></tr></thead><tbody><tr><td>API 调用次数</td><td>15 次</td><td>1 次</td></tr><tr><td>总耗时</td><td>~15 秒</td><td>~1 秒</td></tr><tr><td>失败风险</td><td>高</td><td>低</td></tr></tbody></table>
 <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>经验总结：</strong></p>
 <ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
@@ -455,37 +419,157 @@ POST /records/batch_create
 <pre><pre class="prism-code language-javascript rounded-lg p-4 overflow-x-auto text-sm" style="color:#d6deeb;background-color:#011627"><div class="token-line" style="color:#d6deeb"><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 识别转发</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token keyword" style="color:rgb(127, 219, 202)">const</span><span class="token plain"> isRetweet </span><span class="token operator" style="color:rgb(127, 219, 202)">=</span><span class="token plain"> tweet</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token property-access">referenced_tweets</span><span class="token operator" style="color:rgb(127, 219, 202)">?.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">some</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token parameter">ref</span><span class="token plain"> </span><span class="token arrow operator" style="color:rgb(127, 219, 202)">=&gt;</span><span class="token plain"> ref</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token property-access">type</span><span class="token plain"> </span><span class="token operator" style="color:rgb(127, 219, 202)">===</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27;retweeted&#x27;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain" style="display:inline-block">
 </span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token comment" style="color:rgb(99, 119, 119);font-style:italic">// 添加标记</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">allTweets</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">push</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> </span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token literal-property property" style="color:rgb(128, 203, 196)">json</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token spread operator" style="color:rgb(127, 219, 202)">...</span><span class="token plain">tweet</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token literal-property property" style="color:rgb(128, 203, 196)">is_retweet</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> isRetweet</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">    </span><span class="token literal-property property" style="color:rgb(128, 203, 196)">tweet_type</span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> isRetweet </span><span class="token operator" style="color:rgb(127, 219, 202)">?</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27;转发&#x27;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(127, 219, 202)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(173, 219, 103)">&#x27;原创&#x27;</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#d6deeb"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre></pre>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">5. Notion 字段映射</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table><thead><tr><th>Notion 字段</th><th>类型</th><th>数据源</th></tr></thead><tbody><tr><td>ID</td><td>文本</td><td>tweet.id</td></tr><tr><td>推文内容</td><td>富文本</td><td>tweet.text</td></tr><tr><td>推文类型</td><td>选择</td><td>原创/转发</td></tr><tr><td>发布时间</td><td>日期</td><td>tweet.created_at</td></tr><tr><td>点赞数</td><td>数字</td><td>public_metrics.like_count</td></tr><tr><td>转发数</td><td>数字</td><td>public_metrics.retweet_count</td></tr><tr><td>回复数</td><td>数字</td><td>public_metrics.reply_count</td></tr><tr><td>书签数</td><td>数字</td><td>public_metrics.bookmark_count</td></tr><tr><td>展示数</td><td>数字</td><td>public_metrics.impression_count</td></tr><tr><td>推文链接</td><td>URL</td><td><a href="https://twitter.com/.../status/%7Bid%7D" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">https://twitter.com/.../status/{id}</a></td></tr></tbody></table>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">6. 飞书字段映射</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table><thead><tr><th>飞书字段</th><th>类型</th><th>数据源</th></tr></thead><tbody><tr><td>Content</td><td>文本</td><td>清理后的推文内容</td></tr><tr><td>Tweet Type</td><td>文本</td><td>原创/转发</td></tr><tr><td>Created At</td><td>日期</td><td>tweet.created_at</td></tr><tr><td>Like</td><td>数字</td><td>like_count</td></tr><tr><td>Views</td><td>数字</td><td>impression_count</td></tr><tr><td>Retweet</td><td>数字</td><td>retweet_count</td></tr><tr><td>Reply</td><td>数字</td><td>reply_count</td></tr><tr><td>Bookmark</td><td>数字</td><td>bookmark_count</td></tr><tr><td>Tweet ID</td><td>文本</td><td>tweet.id</td></tr><tr><td>Tweet Link</td><td>文本</td><td>推文链接</td></tr></tbody></table>
 <hr class="my-8 border-gray-200 dark:border-gray-700"/>
 <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">📦 部署清单</h2>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">前置条件</h3>
 <h4>1. Twitter API 凭证</h4>
 <ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->申请 Twitter Developer 账号</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->创建应用获取 Bearer Token</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->确认 API 访问级别（建议 Basic 以上）</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 申请 Twitter Developer 账号</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 创建应用获取 Bearer Token</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 确认 API 访问级别（建议 Basic 以上）</li>
 </ul>
 <h4>2. Notion 配置</h4>
 <ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->创建 Notion 数据库</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->添加所有必需字段（见上方字段映射）</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->获取 Database ID</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->创建 Notion Integration 并授权</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 创建 Notion 数据库</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 添加所有必需字段（见上方字段映射）</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 获取 Database ID</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 创建 Notion Integration 并授权</li>
 </ul>
 <h4>3. 飞书配置</h4>
 <ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->创建飞书自建应用</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->获取 app_id 和 app_secret</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->创建多维表格</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->添加所有必需字段</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->给应用授权访问表格</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 创建飞书自建应用</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 获取 app_id 和 app_secret</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 创建多维表格</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 添加所有必需字段</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 给应用授权访问表格</li>
 </ul>
 <h4>4. 网络环境</h4>
 <ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->本地代理软件运行（如 Clash、v2rayN）</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->测试代理连通性</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 本地代理软件运行（如 Clash、v2rayN）</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 测试代理连通性</li>
 </ul>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">配置步骤</h3>
 <ol class="list-decimal list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
@@ -543,6 +627,35 @@ POST /records/batch_create
 <hr class="my-8 border-gray-200 dark:border-gray-700"/>
 <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">📊 性能优化</h2>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">优化成果</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table><thead><tr><th>指标</th><th>优化前</th><th>优化后</th><th>提升</th></tr></thead><tbody><tr><td>API 调用次数</td><td>17 次</td><td>3 次</td><td>82% ↓</td></tr><tr><td>总执行时间</td><td>~30 秒</td><td>~5 秒</td><td>83% ↓</td></tr><tr><td>失败率</td><td>15%</td><td>&lt;1%</td><td>93% ↓</td></tr></tbody></table>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">优化措施</h3>
 <ol class="list-decimal list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
@@ -581,17 +694,17 @@ POST /records/batch_create
 <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">🎯 未来优化方向</h2>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">功能增强</h3>
 <ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->支持多账号备份</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->添加图片/视频备份</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->支持推文删除同步</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->添加数据统计分析</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 支持多账号备份</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 添加图片/视频备份</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 支持推文删除同步</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 添加数据统计分析</li>
 </ul>
 <h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">技术优化</h3>
 <ul class="list-disc list-inside mb-4 space-y-1 text-gray-700 dark:text-gray-300">
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->实现增量备份（只获取新推文）</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->添加重试机制</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->优化错误通知（邮件/飞书消息）</li>
-<li class="task-list-item"><input type="checkbox" disabled=""/> <!-- -->支持 Webhook 实时触发</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 实现增量备份（只获取新推文）</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 添加重试机制</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 优化错误通知（邮件/飞书消息）</li>
+<li class="task-list-item"><input type="checkbox" disabled=""/> 支持 Webhook 实时触发</li>
 </ul>
 <hr class="my-8 border-gray-200 dark:border-gray-700"/>
 <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">📚 参考资料</h2>
@@ -636,4 +749,4 @@ POST /records/batch_create
 <hr class="my-8 border-gray-200 dark:border-gray-700"/>
 <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"><strong>最后更新时间：</strong> 2025-11-10<br/>
 <strong>文档版本：</strong> 1.0.0<br/>
-<strong>维护状态：</strong> ✅ 活跃维护中</p></div></article><div class="mt-16 pt-16 border-t border-gray-200 dark:border-gray-800"><h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100">评论 (<!-- -->0<!-- -->)</h3><div class="space-y-4"><div class="animate-pulse h-24 bg-gray-100 dark:bg-gray-800 rounded-lg"></div><div class="animate-pulse h-24 bg-gray-100 dark:bg-gray-800 rounded-lg"></div><div class="animate-pulse h-24 bg-gray-100 dark:bg-gray-800 rounded-lg"></div></div><button class="mt-8 w-full py-3 px-4 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg text-gray-500 dark:text-gray-400 hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">写评论...</button></div><div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800"><a class="inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors" href="/"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>返回首页</a></div></div></main><footer class="border-t border-gray-200 dark:border-gray-800 py-8"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400"><p>© 2025 Kevin. Build fast, share fast.</p></div></footer></div><script src="/_next/static/chunks/webpack-45f3ba01ad733075.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/_next/static/css/0a68f07cce603130.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"2:I[2846,[],\"\"]\n5:I[4707,[],\"\"]\n7:I[6423,[],\"\"]\n8:I[9294,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"185\",\"static/chunks/app/layout-38aa4a181ad2d773.js\"],\"Providers\"]\n9:I[2972,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"494\",\"static/chunks/494-1aed5f4e80c0c666.js\",\"246\",\"static/chunks/app/post/%5Bid%5D/page-6bcd36b0f138d355.js\"],\"\"]\na:I[7683,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"185\",\"static/chunks/app/layout-38aa4a181ad2d773.js\"],\"default\"]\nc:I[1060,[],\"\"]\n6:[\"id\",\"140\",\"d\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L2\",null,{\"buildId\":\"Eg-L6vOozAOdZxTY2VGFL\",\"assetPrefix\":\"\",\"urlParts\":[\"\",\"post\",\"140\"],\"initialTree\":[\"\",{\"children\":[\"post\",{\"children\":[[\"id\",\"140\",\"d\"],{\"children\":[\"__PAGE__?{\\\"id\\\":\\\"140\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"post\",{\"children\":[[\"id\",\"140\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L3\",\"$L4\",null],null],null]},[null,[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"post\",\"children\",\"$6\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"post\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/0a68f07cce603130.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"defer\":true,\"src\":\"https://cloud.umami.is/script.js\",\"data-website-id\":\"YOUR_UMAMI_WEBSITE_ID\"}]}],[\"$\",\"body\",null,{\"className\":\"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100\",\"children\":[\"$\",\"$L8\",null,{\"children\":[\"$\",\"div\",null,{\"className\":\"min-h-screen flex flex-col\",\"children\":[[\"$\",\"header\",null,{\"className\":\"border-b border-gray-200 dark:border-gray-800\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between\",\"children\":[[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"text-xl font-semibold hover:opacity-70 transition-opacity\",\"children\":\"Kevin\"}],[\"$\",\"nav\",null,{\"className\":\"flex items-center gap-6\",\"children\":[[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"文章\"}],[\"$\",\"$L9\",null,{\"href\":\"/thoughts\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"Thoughts\"}],[\"$\",\"$L9\",null,{\"href\":\"/projects\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"项目\"}],[\"$\",\"$L9\",null,{\"href\":\"/about\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"关于\"}],[\"$\",\"$La\",null,{}]]}]]}]}],[\"$\",\"main\",null,{\"className\":\"flex-1\",\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]}],[\"$\",\"footer\",null,{\"className\":\"border-t border-gray-200 dark:border-gray-800 py-8\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400\",\"children\":[\"$\",\"p\",null,{\"children\":\"© 2025 Kevin. Build fast, share fast.\"}]}]}]]}]}]}]]}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"e:I[8172,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"494\",\"static/chunks/494-1aed5f4e80c0c666.js\",\"246\",\"static/chunks/app/post/%5Bid%5D/page-6bcd36b0f138d355.js\"],\"default\"]\n10:I[1255,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"494\",\"static/chunks/494-1aed5f4e80c0c666.js\",\"246\",\"static/chunks/app/post/%5Bid%5D/page-6bcd36b0f138d355.js\"],\"default\"]\nf:T5d52,"])</script><script>self.__next_f.push([1,"\u003chtml\u003e\n\u003cbody\u003e\n\u003c!--StartFragment--\u003e\u003chtml\u003e\u003chead\u003e\u003c/head\u003e\u003cbody\u003e\u003ch1\u003eX(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档\u003c/h1\u003e\n\u003ch2\u003e📋 项目概述\u003c/h2\u003e\n\u003cp\u003e本项目实现了一个 n8n 自动化工作流，每天定时将 X(Twitter) 账号的原创推文和转发推文备份到 Notion 数据库和飞书多维表格中。\u003c/p\u003e\n\u003ch3\u003e功能特性\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e✅ 每天早上 7 点自动运行\u003c/li\u003e\n\u003cli\u003e✅ 获取昨天的所有推文（原创 + 转发）\u003c/li\u003e\n\u003cli\u003e✅ 自动排除回复内容\u003c/li\u003e\n\u003cli\u003e✅ 同步到 Notion 和飞书\u003c/li\u003e\n\u003cli\u003e✅ 支持代理访问 Twitter API\u003c/li\u003e\n\u003cli\u003e✅ 完善的错误处理和日志记录\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e🏗️ 系统架构\u003c/h2\u003e\n\u003ch3\u003e工作流节点图\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003e每天早7点触发\n    ↓\n计算时间范围（昨天 00:00 - 今天 00:00）\n    ↓\n获取推文数据（通过代理访问 Twitter API）\n    ↓\n处理推文数据（分离原创/转发，数据清洗）\n    ↓\n过滤有效数据（确保数据完整性）\n    ↓\n    ├─→ 写入 Notion（单条写入）\n    │\n    └─→ 获取飞书 Token\n            ↓\n        准备飞书批量数据\n            ↓\n        批量写入飞书（一次写入所有）\n\u003c/code\u003e\u003c/pre\u003e\n\u003chr\u003e\n\u003ch2\u003e🐛 开发过程中的问题与解决方案\u003c/h2\u003e\n\u003ch3\u003e问题 1：合并节点配置错误\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e错误信息：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eYou need to define at least one pair of fields in \"Fields to Match\" to match on\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e原因分析：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e使用了 \u003ccode\u003emode: \"combine\"\u003c/code\u003e + \u003ccode\u003ecombinationMode: \"mergeByPosition\"\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003e这种模式需要定义匹配字段才能合并数据\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003e解决方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"parameters\": {\n    \"mode\": \"append\"  // 改为追加模式，不需要匹配字段\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003ecombine\u003c/code\u003e 模式：用于按字段匹配合并（需要配置匹配字段）\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003eappend\u003c/code\u003e 模式：简单追加所有数据（适合本场景）\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 2：Twitter API 速率限制（429 错误）\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e错误信息：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"status\": 429,\n  \"title\": \"Too Many Requests\"\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e原因分析：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e初始设计分别调用两次 API（原创推文 + 转发推文）\u003c/li\u003e\n\u003cli\u003eTwitter API v2 有严格的速率限制\u003c/li\u003e\n\u003cli\u003eFree tier 每月只有 1500 条推文读取配额\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003e解决方案：\u003c/strong\u003e\n优化为单次 API 调用：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 一次性获取所有推文（不排除转发）\nurl: \"https://api.twitter.com/2/users/{user_id}/tweets\"\nqueryParameters: {\n  exclude: \"replies\",  // 只排除回复\n  tweet.fields: \"created_at,public_metrics,referenced_tweets\"\n}\n\n// 在代码节点中分离原创和转发\nconst isRetweet = tweet.referenced_tweets?.some(ref =\u0026gt; ref.type === 'retweeted');\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e优先使用单次 API 调用获取所有数据\u003c/li\u003e\n\u003cli\u003e在代码中进行数据分类和过滤\u003c/li\u003e\n\u003cli\u003eAPI 调用次数：从 2 次降低到 1 次（减少 50%）\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 3：代理配置缺失\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e问题描述：\u003c/strong\u003e\n国内网络环境无法直接访问 Twitter API\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e解决方案：\u003c/strong\u003e\n在 HTTP Request 节点中添加代理配置：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"options\": {\n    \"proxy\": \"http://127.0.0.1:7890\",\n    \"timeout\": 30000\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e注意事项：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e确保本地代理软件正在运行\u003c/li\u003e\n\u003cli\u003e测试代理：\u003ccode\u003ecurl -x http://127.0.0.1:7890 https://api.twitter.com\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003e根据实际情况修改端口号\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 4：飞书认证 Token 过期\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e问题描述：\u003c/strong\u003e\n初始配置使用硬编码的 Bearer Token，很快过期失效\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e错误方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"headers\": {\n    \"Authorization\": \"Bearer u-ef55Oywvd6eW9f7H4uMP0911jQYw10qphMG050MGwB8D\"\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e正确方案：\u003c/strong\u003e\n使用飞书应用凭证动态获取 Token：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\u003cstrong\u003e获取 Token 节点：\u003c/strong\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"method\": \"POST\",\n  \"url\": \"https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal\",\n  \"bodyParameters\": {\n    \"app_id\": \"cli_a985d1564eb9900b\",\n    \"app_secret\": \"m83GwLY8ytgaX03E5wxapiIVvjzSvlPP\"\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start=\"2\"\u003e\n\u003cli\u003e\u003cstrong\u003e使用动态 Token：\u003c/strong\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"headers\": {\n    \"Authorization\": \"Bearer {{ $('获取飞书Token').item.json.tenant_access_token }}\"\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e永远不要硬编码 Token\u003c/li\u003e\n\u003cli\u003e使用应用凭证动态获取，保证长期有效\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 5：推文内容导致 JSON 解析错误\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e错误信息：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eJSON parameter needs to be valid JSON\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e原因分析：\u003c/strong\u003e\n推文内容包含特殊字符（换行符、制表符、引号等）破坏 JSON 格式：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 问题示例\n\"Content\": \"这是一条推文\n包含换行符\"  // ❌ 导致 JSON 解析失败\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e初次尝试（失败）：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 转义特殊字符\ncleanText = cleanText\n  .replace(/\\n/g, '\\\\n')\n  .replace(/\"/g, '\\\\\"')\n// 问题：在 n8n 表达式中仍然可能出错\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e最终方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 直接移除或替换特殊字符为空格\ncleanText = cleanText\n  .replace(/[\\x00-\\x08\\x0B-\\x0C\\x0E-\\x1F\\x7F]/g, '') // 移除控制字符\n  .replace(/\\r\\n/g, ' ')  // Windows 换行\n  .replace(/\\r/g, ' ')    // Mac 换行\n  .replace(/\\n/g, ' ')    // Unix 换行\n  .replace(/\\t/g, ' ')    // 制表符\n  .trim();\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e对于用户输入的文本，永远不要假设格式\u003c/li\u003e\n\u003cli\u003e在插入 JSON 前必须清理数据\u003c/li\u003e\n\u003cli\u003e简单替换为空格比复杂转义更可靠\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 6：飞书写入效率低下\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e问题描述：\u003c/strong\u003e\n初始设计使用单条写入，15 条推文需要调用 15 次 API\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e低效方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 为每条推文单独调用 API\nPOST /records\n{\n  \"fields\": { ... }  // 单条记录\n}\n// 重复 15 次\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e优化方案：\u003c/strong\u003e\n使用飞书批量创建 API：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 一次性写入所有记录\nPOST /records/batch_create\n{\n  \"records\": [\n    { \"fields\": { ... } },  // 记录 1\n    { \"fields\": { ... } },  // 记录 2\n    // ... 15 条记录\n  ]\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e性能对比：\u003c/strong\u003e\u003c/p\u003e\n\n指标 | 单条写入 | 批量写入\n-- | -- | --\nAPI 调用次数 | 15 次 | 1 次\n总耗时 | ~15 秒 | ~1 秒\n失败风险 | 高 | 低\n\n\n\u003ch3\u003e优化措施\u003c/h3\u003e\n\u003col\u003e\n\u003cli\u003e✅ 合并 Twitter API 调用（2→1）\u003c/li\u003e\n\u003cli\u003e✅ 使用飞书批量 API（15→1）\u003c/li\u003e\n\u003cli\u003e✅ 优化数据处理逻辑\u003c/li\u003e\n\u003cli\u003e✅ 添加完善的错误处理\u003c/li\u003e\n\u003c/ol\u003e\n\u003chr\u003e\n\u003ch2\u003e🚨 注意事项\u003c/h2\u003e\n\u003ch3\u003e1. API 配额管理\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eTwitter Free tier：1500 条/月\u003c/li\u003e\n\u003cli\u003e合理设置 \u003ccode\u003emax_results\u003c/code\u003e（建议 100）\u003c/li\u003e\n\u003cli\u003e监控 API 使用量\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e2. 数据一致性\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e推文可能被删除\u003c/li\u003e\n\u003cli\u003e数据统计可能更新\u003c/li\u003e\n\u003cli\u003e定期清理重复数据\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e3. 安全性\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e不要在代码中硬编码密钥\u003c/li\u003e\n\u003cli\u003e使用 n8n 凭证管理\u003c/li\u003e\n\u003cli\u003e定期更新 Token\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e4. 时区问题\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eTwitter API 使用 UTC 时间\u003c/li\u003e\n\u003cli\u003e确保本地时间计算正确\u003c/li\u003e\n\u003cli\u003e考虑夏令时影响\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e🎯 未来优化方向\u003c/h2\u003e\n\u003ch3\u003e功能增强\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e[ ] 支持多账号备份\u003c/li\u003e\n\u003cli\u003e[ ] 添加图片/视频备份\u003c/li\u003e\n\u003cli\u003e[ ] 支持推文删除同步\u003c/li\u003e\n\u003cli\u003e[ ] 添加数据统计分析\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e技术优化\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e[ ] 实现增量备份（只获取新推文）\u003c/li\u003e\n\u003cli\u003e[ ] 添加重试机制\u003c/li\u003e\n\u003cli\u003e[ ] 优化错误通知（邮件/飞书消息）\u003c/li\u003e\n\u003cli\u003e[ ] 支持 Webhook 实时触发\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e📚 参考资料\u003c/h2\u003e\n\u003ch3\u003e官方文档\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://developer.twitter.com/en/docs/twitter-api\"\u003eTwitter API v2 文档\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://developers.notion.com/\"\u003eNotion API 文档\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://open.feishu.cn/document/\"\u003e飞书开放平台文档\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://docs.n8n.io/\"\u003en8n 官方文档\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e相关资源\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://developer.twitter.com/en/docs/twitter-api/rate-limits\"\u003eTwitter API 速率限制\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview\"\u003e飞书多维表格 API\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://docs.n8n.io/code-examples/\"\u003en8n Code 节点指南\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e🤝 贡献与反馈\u003c/h2\u003e\n\u003cp\u003e如果你在使用过程中遇到问题或有改进建议，欢迎：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e提交 Issue\u003c/li\u003e\n\u003cli\u003e分享使用经验\u003c/li\u003e\n\u003cli\u003e贡献代码优化\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e📝 版本历史\u003c/h2\u003e\n\u003ch3\u003ev1.0.0（最终版）\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e✅ 实现基础功能\u003c/li\u003e\n\u003cli\u003e✅ 优化性能（批量写入）\u003c/li\u003e\n\u003cli\u003e✅ 完善错误处理\u003c/li\u003e\n\u003cli\u003e✅ 添加详细日志\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e开发里程碑\u003c/h3\u003e\n\u003col\u003e\n\u003cli\u003e初始设计（双 API 调用）\u003c/li\u003e\n\u003cli\u003e合并 API 优化\u003c/li\u003e\n\u003cli\u003e修复飞书认证\u003c/li\u003e\n\u003cli\u003e实现批量写入\u003c/li\u003e\n\u003cli\u003e文本清理优化\u003c/li\u003e\n\u003c/ol\u003e\n\u003chr\u003e\n\u003cp\u003e\u003cstrong\u003e最后更新时间：\u003c/strong\u003e 2025-11-10\u003cbr\u003e\n\u003cstrong\u003e文档版本：\u003c/strong\u003e 1.0.0\u003cbr\u003e\n\u003cstrong\u003e维护状态：\u003c/strong\u003e ✅ 活跃维护中\u003c/p\u003e\u003c/body\u003e\u003c/html\u003e\u003c!--EndFragment--\u003e\n\u003c/body\u003e\n\u003c/html\u003e# X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档\n\n## 📋 项目概述\n\n本项目实现了一个 n8n 自动化工作流，每天定时将 X(Twitter) 账号的原创推文和转发推文备份到 Notion 数据库和飞书多维表格中。\n\n### 功能特性\n- ✅ 每天早上 7 点自动运行\n- ✅ 获取昨天的所有推文（原创 + 转发）\n- ✅ 自动排除回复内容\n- ✅ 同步到 Notion 和飞书\n- ✅ 支持代理访问 Twitter API\n- ✅ 完善的错误处理和日志记录\n\n---\n\n## 🏗️ 系统架构\n\n### 工作流节点图\n```\n每天早7点触发\n    ↓\n计算时间范围（昨天 00:00 - 今天 00:00）\n    ↓\n获取推文数据（通过代理访问 Twitter API）\n    ↓\n处理推文数据（分离原创/转发，数据清洗）\n    ↓\n过滤有效数据（确保数据完整性）\n    ↓\n    ├─→ 写入 Notion（单条写入）\n    │\n    └─→ 获取飞书 Token\n            ↓\n        准备飞书批量数据\n            ↓\n        批量写入飞书（一次写入所有）\n```\n\n---\n\n## 🐛 开发过程中的问题与解决方案\n\n### 问题 1：合并节点配置错误\n\n**错误信息：**\n```\nYou need to define at least one pair of fields in \"Fields to Match\" to match on\n```\n\n**原因分析：**\n- 使用了 `mode: \"combine\"` + `combinationMode: \"mergeByPosition\"`\n- 这种模式需要定义匹配字段才能合并数据\n\n**解决方案：**\n```json\n{\n  \"parameters\": {\n    \"mode\": \"append\"  // 改为追加模式，不需要匹配字段\n  }\n}\n```\n\n**经验总结：**\n- `combine` 模式：用于按字段匹配合并（需要配置匹配字段）\n- `append` 模式：简单追加所有数据（适合本场景）\n\n---\n\n### 问题 2：Twitter API 速率限制（429 错误）\n\n**错误信息：**\n```json\n{\n  \"status\": 429,\n  \"title\": \"Too Many Requests\"\n}\n```\n\n**原因分析：**\n- 初始设计分别调用两次 API（原创推文 + 转发推文）\n- Twitter API v2 有严格的速率限制\n- Free tier 每月只有 1500 条推文读取配额\n\n**解决方案：**\n优化为单次 API 调用：\n```javascript\n// 一次性获取所有推文（不排除转发）\nurl: \"https://api.twitter.com/2/users/{user_id}/tweets\"\nqueryParameters: {\n  exclude: \"replies\",  // 只排除回复\n  tweet.fields: \"created_at,public_metrics,referenced_tweets\"\n}\n\n// 在代码节点中分离原创和转发\nconst isRetweet = tweet.referenced_tweets?.some(ref =\u003e ref.type === 'retweeted');\n```\n\n**经验总结：**\n- 优先使用单次 API 调用获取所有数据\n- 在代码中进行数据分类和过滤\n- API 调用次数：从 2 次降低到 1 次（减少 50%）\n\n---\n\n### 问题 3：代理配置缺失\n\n**问题描述：**\n国内网络环境无法直接访问 Twitter API\n\n**解决方案：**\n在 HTTP Request 节点中添加代理配置：\n```json\n{\n  \"options\": {\n    \"proxy\": \"http://127.0.0.1:7890\",\n    \"timeout\": 30000\n  }\n}\n```\n\n**注意事项：**\n- 确保本地代理软件正在运行\n- 测试代理：`curl -x http://127.0.0.1:7890 https://api.twitter.com`\n- 根据实际情况修改端口号\n\n---\n\n### 问题 4：飞书认证 Token 过期\n\n**问题描述：**\n初始配置使用硬编码的 Bearer Token，很快过期失效\n\n**错误方案：**\n```json\n{\n  \"headers\": {\n    \"Authorization\": \"Bearer u-ef55Oywvd6eW9f7H4uMP0911jQYw10qphMG050MGwB8D\"\n  }\n}\n```\n\n**正确方案：**\n使用飞书应用凭证动态获取 Token：\n\n1. **获取 Token 节点：**\n```json\n{\n  \"method\": \"POST\",\n  \"url\": \"https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal\",\n  \"bodyParameters\": {\n    \"app_id\": \"cli_a985d1564eb9900b\",\n    \"app_secret\": \"m83GwLY8ytgaX03E5wxapiIVvjzSvlPP\"\n  }\n}\n```\n\n2. **使用动态 Token：**\n```json\n{\n  \"headers\": {\n    \"Authorization\": \"Bearer {{ $('获取飞书Token').item.json.tenant_access_token }}\"\n  }\n}\n```\n\n**经验总结：**\n- 永远不要硬编码 Token\n- 使用应用凭证动态获取，保证长期有效\n\n---\n\n### 问题 5：推文内容导致 JSON 解析错误\n\n**错误信息：**\n```\nJSON parameter needs to be valid JSON\n```\n\n**原因分析：**\n推文内容包含特殊字符（换行符、制表符、引号等）破坏 JSON 格式：\n```javascript\n// 问题示例\n\"Content\": \"这是一条推文\n包含换行符\"  // ❌ 导致 JSON 解析失败\n```\n\n**初次尝试（失败）：**\n```javascript\n// 转义特殊字符\ncleanText = cleanText\n  .replace(/\\n/g, '\\\\n')\n  .replace(/\"/g, '\\\\\"')\n// 问题：在 n8n 表达式中仍然可能出错\n```\n\n**最终方案：**\n```javascript\n// 直接移除或替换特殊字符为空格\ncleanText = cleanText\n  .replace(/[\\x00-\\x08\\x0B-\\x0C\\x0E-\\x1F\\x7F]/g, '') // 移除控制字符\n  .replace(/\\r\\n/g, ' ')  // Windows 换行\n  .replace(/\\r/g, ' ')    // Mac 换行\n  .replace(/\\n/g, ' ')    // Unix 换行\n  .replace(/\\t/g, ' ')    // 制表符\n  .trim();\n```\n\n**经验总结：**\n- 对于用户输入的文本，永远不要假设格式\n- 在插入 JSON 前必须清理数据\n- 简单替换为空格比复杂转义更可靠\n\n---\n\n### 问题 6：飞书写入效率低下\n\n**问题描述：**\n初始设计使用单条写入，15 条推文需要调用 15 次 API\n\n**低效方案：**\n```javascript\n// 为每条推文单独调用 API\nPOST /records\n{\n  \"fields\": { ... }  // 单条记录\n}\n// 重复 15 次\n```\n\n**优化方案：**\n使用飞书批量创建 API：\n```javascript\n// 一次性写入所有记录\nPOST /records/batch_create\n{\n  \"records\": [\n    { \"fields\": { ... } },  // 记录 1\n    { \"fields\": { ... } },  // 记录 2\n    // ... 15 条记录\n  ]\n}\n```\n\n**性能对比：**\n| 指标 | 单条写入 | 批量写入 |\n|------|---------|---------|\n| API 调用次数 | 15 次 | 1 次 |\n| 总耗时 | ~15 秒 | ~1 秒 |\n| 失败风险 | 高 | 低 |\n\n**经验总结：**\n- 优先使用批量 API（如果支持）\n- 减少网络往返次数\n- 降低部分失败的风险\n\n---\n\n### 问题 7：数据流传递错误\n\n**问题描述：**\n\"准备飞书数据\" 节点执行成功，但后续节点显示 \"No output data returned\"\n\n**原因分析：**\n```javascript\n// ❌ 错误：返回数组\nreturn results;\n\n// ✅ 正确：返回 n8n 格式的对象数组\nreturn [{\n  json: {\n    token: token,\n    records: records,\n    total: records.length\n  }\n}];\n```\n\n**经验总结：**\n- n8n Code 节点必须返回 `[{ json: {...} }]` 格式\n- 即使只有一条数据，也要包装成数组\n\n---\n\n## 🔧 最终配置详解\n\n### 1. Cron 触发器\n```json\n{\n  \"triggerTimes\": {\n    \"item\": [\n      {\n        \"hour\": 7,\n        \"minute\": 0\n      }\n    ]\n  }\n}\n```\n- 每天早上 7:00 UTC 时间触发\n- 可根据时区调整\n\n### 2. 计算时间范围\n```javascript\nconst now = new Date();\nconst yesterday = new Date(now);\nyesterday.setDate(now.getDate() - 1);\nyesterday.setHours(0, 0, 0, 0);\n\nconst today = new Date(now);\ntoday.setHours(0, 0, 0, 0);\n\nreturn [{ \n  json: { \n    start_time: yesterday.toISOString(),\n    end_time: today.toISOString()\n  } \n}];\n```\n- 精确获取昨天 00:00 到今天 00:00 的推文\n\n### 3. Twitter API 配置\n```javascript\n// API 端点\nurl: \"https://api.twitter.com/2/users/1576219005488369665/tweets\"\n\n// 查询参数\n{\n  \"max_results\": 100,\n  \"tweet.fields\": \"created_at,public_metrics,referenced_tweets\",\n  \"exclude\": \"replies\",\n  \"start_time\": \"...\",\n  \"end_time\": \"...\"\n}\n\n// 认证\nauthentication: \"httpBearerAuth\"\n```\n\n### 4. 数据处理逻辑\n```javascript\n// 识别转发\nconst isRetweet = tweet.referenced_tweets?.some(\n  ref =\u003e ref.type === 'retweeted'\n);\n\n// 添加标记\nallTweets.push({ \n  json: {\n    ...tweet,\n    is_retweet: isRetweet,\n    tweet_type: isRetweet ? '转发' : '原创'\n  }\n});\n```\n\n### 5. Notion 字段映射\n| Notion 字段 | 类型 | 数据源 |\n|------------|------|--------|\n| ID | 文本 | tweet.id |\n| 推文内容 | 富文本 | tweet.text |\n| 推文类型 | 选择 | 原创/转发 |\n| 发布时间 | 日期 | tweet.created_at |\n| 点赞数 | 数字 | public_metrics.like_count |\n| 转发数 | 数字 | public_metrics.retweet_count |\n| 回复数 | 数字 | public_metrics.reply_count |\n| 书签数 | 数字 | public_metrics.bookmark_count |\n| 展示数 | 数字 | public_metrics.impression_count |\n| 推文链接 | URL | https://twitter.com/.../status/{id} |\n\n### 6. 飞书字段映射\n| 飞书字段 | 类型 | 数据源 |\n|---------|------|--------|\n| Content | 文本 | 清理后的推文内容 |\n| Tweet Type | 文本 | 原创/转发 |\n| Created At | 日期 | tweet.created_at |\n| Like | 数字 | like_count |\n| Views | 数字 | impression_count |\n| Retweet | 数字 | retweet_count |\n| Reply | 数字 | reply_count |\n| Bookmark | 数字 | bookmark_count |\n| Tweet ID | 文本 | tweet.id |\n| Tweet Link | 文本 | 推文链接 |\n\n---\n\n## 📦 部署清单\n\n### 前置条件\n\n#### 1. Twitter API 凭证\n- [ ] 申请 Twitter Developer 账号\n- [ ] 创建应用获取 Bearer Token\n- [ ] 确认 API 访问级别（建议 Basic 以上）\n\n#### 2. Notion 配置\n- [ ] 创建 Notion 数据库\n- [ ] 添加所有必需字段（见上方字段映射）\n- [ ] 获取 Database ID\n- [ ] 创建 Notion Integration 并授权\n\n#### 3. 飞书配置\n- [ ] 创建飞书自建应用\n- [ ] 获取 app_id 和 app_secret\n- [ ] 创建多维表格\n- [ ] 添加所有必需字段\n- [ ] 给应用授权访问表格\n\n#### 4. 网络环境\n- [ ] 本地代理软件运行（如 Clash、v2rayN）\n- [ ] 测试代理连通性\n\n### 配置步骤\n\n1. **导入工作流 JSON**\n   - 复制完整的 JSON 配置\n   - 在 n8n 中选择 \"Import from JSON\"\n\n2. **更新凭证信息**\n   ```json\n   // Twitter Bearer Token\n   credentials: {\n     httpBearerAuth: {\n       id: \"YOUR_CREDENTIAL_ID\"\n     }\n   }\n   \n   // Notion API\n   credentials: {\n     notionApi: {\n       id: \"YOUR_NOTION_CREDENTIAL_ID\"\n     }\n   }\n   \n   // 飞书应用凭证\n   \"app_id\": \"YOUR_APP_ID\",\n   \"app_secret\": \"YOUR_APP_SECRET\"\n   ```\n\n3. **更新配置参数**\n   ```javascript\n   // Twitter 用户 ID\n   user_id: \"YOUR_TWITTER_USER_ID\"\n   \n   // Notion Database ID\n   databaseId: \"YOUR_DATABASE_ID\"\n   \n   // 飞书表格 ID\n   apps/YOUR_APP_ID/tables/YOUR_TABLE_ID\n   \n   // 代理地址（如果需要）\n   proxy: \"http://127.0.0.1:YOUR_PORT\"\n   ```\n\n4. **测试运行**\n   - 单独测试每个节点\n   - 完整运行一次工作流\n   - 检查 Notion 和飞书中的数据\n\n5. **激活定时任务**\n   ```json\n   \"active\": true\n   ```\n\n---\n\n## 🔍 调试技巧\n\n### 1. 查看节点输出\n- 点击节点查看 Schema/Table/JSON 视图\n- 使用 `console.log()` 输出调试信息\n- 在浏览器开发者工具中查看 console\n\n### 2. 常见错误排查\n\n**Twitter API 错误：**\n```bash\n# 测试 API 连接\ncurl -H \"Authorization: Bearer YOUR_TOKEN\" \\\n  \"https://api.twitter.com/2/users/YOUR_USER_ID/tweets\"\n```\n\n**代理问题：**\n```bash\n# 测试代理\ncurl -x http://127.0.0.1:7890 https://api.twitter.com\n```\n\n**飞书 Token 问题：**\n```bash\n# 测试获取 Token\ncurl -X POST https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"app_id\":\"YOUR_ID\",\"app_secret\":\"YOUR_SECRET\"}'\n```\n\n### 3. 日志监控\n在关键节点添加日志：\n```javascript\nconsole.log(`成功获取 ${tweets.length} 条推文`);\nconsole.log(`准备批量写入 ${records.length} 条记录`);\n```\n\n---\n\n## 📊 性能优化\n\n### 优化成果\n| 指标 | 优化前 | 优化后 | 提升 |\n|------|--------|--------|------|\n| API 调用次数 | 17 次 | 3 次 | 82% ↓ |\n| 总执行时间 | ~30 秒 | ~5 秒 | 83% ↓ |\n| 失败率 | 15% | \u003c1% | 93% ↓ |\n\n### 优化措施\n1. ✅ 合并 Twitter API 调用（2→1）\n2. ✅ 使用飞书批量 API（15→1）\n3. ✅ 优化数据处理逻辑\n4. ✅ 添加完善的错误处理\n\n---\n\n## 🚨 注意事项\n\n### 1. API 配额管理\n- Twitter Free tier：1500 条/月\n- 合理设置 `max_results`（建议 100）\n- 监控 API 使用量\n\n### 2. 数据一致性\n- 推文可能被删除\n- 数据统计可能更新\n- 定期清理重复数据\n\n### 3. 安全性\n- 不要在代码中硬编码密钥\n- 使用 n8n 凭证管理\n- 定期更新 Token\n\n### 4. 时区问题\n- Twitter API 使用 UTC 时间\n- 确保本地时间计算正确\n- 考虑夏令时影响\n\n---\n\n## 🎯 未来优化方向\n\n### 功能增强\n- [ ] 支持多账号备份\n- [ ] 添加图片/视频备份\n- [ ] 支持推文删除同步\n- [ ] 添加数据统计分析\n\n### 技术优化\n- [ ] 实现增量备份（只获取新推文）\n- [ ] 添加重试机制\n- [ ] 优化错误通知（邮件/飞书消息）\n- [ ] 支持 Webhook 实时触发\n\n---\n\n## 📚 参考资料\n\n### 官方文档\n- [[Twitter API v2 文档](https://developer.twitter.com/en/docs/twitter-api)](https://developer.twitter.com/en/docs/twitter-api)\n- [[Notion API 文档](https://developers.notion.com/)](https://developers.notion.com/)\n- [[飞书开放平台文档](https://open.feishu.cn/document/)](https://open.feishu.cn/document/)\n- [[n8n 官方文档](https://docs.n8n.io/)](https://docs.n8n.io/)\n\n### 相关资源\n- [[Twitter API 速率限制](https://developer.twitter.com/en/docs/twitter-api/rate-limits)](https://developer.twitter.com/en/docs/twitter-api/rate-limits)\n- [[飞书多维表格 API](https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview)](https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview)\n- [[n8n Code 节点指南](https://docs.n8n.io/code-examples/)](https://docs.n8n.io/code-examples/)\n\n---\n\n## 🤝 贡献与反馈\n\n如果你在使用过程中遇到问题或有改进建议，欢迎：\n- 提交 Issue\n- 分享使用经验\n- 贡献代码优化\n\n---\n\n## 📝 版本历史\n\n### v1.0.0（最终版）\n- ✅ 实现基础功能\n- ✅ 优化性能（批量写入）\n- ✅ 完善错误处理\n- ✅ 添加详细日志\n\n### 开发里程碑\n1. 初始设计（双 API 调用）\n2. 合并 API 优化\n3. 修复飞书认证\n4. 实现批量写入\n5. 文本清理优化\n\n---\n\n**最后更新时间：** 2025-11-10  \n**文档版本：** 1.0.0  \n**维护状态：** ✅ 活跃维护中"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"className\":\"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12\",\"children\":[[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"className\":\"w-4 h-4 mr-1\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"viewBox\":\"0 0 24 24\",\"children\":[\"$\",\"path\",null,{\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2,\"d\":\"M15 19l-7-7 7-7\"}]}],\"返回\"]}],[\"$\",\"header\",null,{\"className\":\"mb-12\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight\",\"children\":\"X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档\"}],[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500\",\"children\":[[\"$\",\"time\",null,{\"className\":\"tabular-nums\",\"children\":\"2025/11/10\"}],[\"$\",\"div\",null,{\"className\":\"flex gap-2\",\"children\":[[\"$\",\"span\",\"notes\",{\"className\":\"text-gray-400 dark:text-gray-500\",\"children\":[\"#\",\"notes\"]}],[\"$\",\"span\",\"项目记录\",{\"className\":\"text-gray-400 dark:text-gray-500\",\"children\":[\"#\",\"项目记录\"]}],[\"$\",\"span\",\"记录\",{\"className\":\"text-gray-400 dark:text-gray-500\",\"children\":[\"#\",\"记录\"]}]]}]]}]]}],[\"$\",\"article\",null,{\"className\":\"prose dark:prose-invert max-w-none\",\"children\":[\"$\",\"$Le\",null,{\"content\":\"$f\"}]}],[\"$\",\"$L10\",null,{\"postId\":\"140\"}],[\"$\",\"div\",null,{\"className\":\"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800\",\"children\":[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"className\":\"w-4 h-4 mr-1\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"viewBox\":\"0 0 24 24\",\"children\":[\"$\",\"path\",null,{\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2,\"d\":\"M15 19l-7-7 7-7\"}]}],\"返回首页\"]}]}]]}]\nb:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, in"])</script><script>self.__next_f.push([1,"itial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档 - Kevin's Blog\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Build fast, share fast. 独立开发者、自媒体人、AI魔法师。\"}],[\"$\",\"link\",\"4\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]]\n3:null\n"])</script></body></html>
+<strong>维护状态：</strong> ✅ 活跃维护中</p></div></article><div class="mt-16 pt-16 border-t border-gray-200 dark:border-gray-800"><h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100">评论 (<!-- -->0<!-- -->)</h3><div class="space-y-4"><div class="animate-pulse h-24 bg-gray-100 dark:bg-gray-800 rounded-lg"></div><div class="animate-pulse h-24 bg-gray-100 dark:bg-gray-800 rounded-lg"></div><div class="animate-pulse h-24 bg-gray-100 dark:bg-gray-800 rounded-lg"></div></div><button class="mt-8 w-full py-3 px-4 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg text-gray-500 dark:text-gray-400 hover:border-gray-400 dark:hover:border-gray-600 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">写评论...</button></div><div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800"><a class="inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors" href="/"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>返回首页</a></div></div></main><footer class="border-t border-gray-200 dark:border-gray-800 py-8"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400"><p>© 2025 多多. Build fast, share fast.</p></div></footer></div><script src="/_next/static/chunks/webpack-45f3ba01ad733075.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/_next/static/css/627c536f2f2b9e7d.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"2:I[2846,[],\"\"]\n5:I[4707,[],\"\"]\n7:I[6423,[],\"\"]\n8:I[9294,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"185\",\"static/chunks/app/layout-38aa4a181ad2d773.js\"],\"Providers\"]\n9:I[2972,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"196\",\"static/chunks/196-f2bfcbb86a691470.js\",\"246\",\"static/chunks/app/post/%5Bid%5D/page-8b7f24c82cd843a5.js\"],\"\"]\na:I[7683,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"185\",\"static/chunks/app/layout-38aa4a181ad2d773.js\"],\"default\"]\nc:I[1060,[],\"\"]\n6:[\"id\",\"140\",\"d\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L2\",null,{\"buildId\":\"Ugua6sxxmw2uHWzIex66t\",\"assetPrefix\":\"\",\"urlParts\":[\"\",\"post\",\"140\"],\"initialTree\":[\"\",{\"children\":[\"post\",{\"children\":[[\"id\",\"140\",\"d\"],{\"children\":[\"__PAGE__?{\\\"id\\\":\\\"140\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"post\",{\"children\":[[\"id\",\"140\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L3\",\"$L4\",null],null],null]},[null,[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"post\",\"children\",\"$6\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"post\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/627c536f2f2b9e7d.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[[\"$\",\"script\",null,{\"async\":true,\"src\":\"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M\"}],[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n              window.dataLayer = window.dataLayer || [];\\n              function gtag(){dataLayer.push(arguments);}\\n              gtag('js', new Date());\\n              gtag('config', 'G-0CW52HXX9M');\\n            \"}}]]}],[\"$\",\"body\",null,{\"className\":\"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100\",\"children\":[\"$\",\"$L8\",null,{\"children\":[\"$\",\"div\",null,{\"className\":\"min-h-screen flex flex-col\",\"children\":[[\"$\",\"header\",null,{\"className\":\"border-b border-gray-200 dark:border-gray-800\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between\",\"children\":[[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"text-xl font-semibold hover:opacity-70 transition-opacity\",\"children\":\"多多\"}],[\"$\",\"nav\",null,{\"className\":\"flex items-center gap-6\",\"children\":[[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"文章\"}],[\"$\",\"$L9\",null,{\"href\":\"/thoughts\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"Thoughts\"}],[\"$\",\"$L9\",null,{\"href\":\"/projects\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"项目\"}],[\"$\",\"$L9\",null,{\"href\":\"/about\",\"className\":\"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors\",\"children\":\"关于\"}],[\"$\",\"$La\",null,{}]]}]]}]}],[\"$\",\"main\",null,{\"className\":\"flex-1\",\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L7\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]}],[\"$\",\"footer\",null,{\"className\":\"border-t border-gray-200 dark:border-gray-800 py-8\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400\",\"children\":[\"$\",\"p\",null,{\"children\":\"© 2025 多多. Build fast, share fast.\"}]}]}]]}]}]}]]}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"e:I[8172,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"196\",\"static/chunks/196-f2bfcbb86a691470.js\",\"246\",\"static/chunks/app/post/%5Bid%5D/page-8b7f24c82cd843a5.js\"],\"default\"]\n10:I[1255,[\"972\",\"static/chunks/972-66d51a7cc4f97c94.js\",\"196\",\"static/chunks/196-f2bfcbb86a691470.js\",\"246\",\"static/chunks/app/post/%5Bid%5D/page-8b7f24c82cd843a5.js\"],\"default\"]\nf:T5d52,"])</script><script>self.__next_f.push([1,"\u003chtml\u003e\n\u003cbody\u003e\n\u003c!--StartFragment--\u003e\u003chtml\u003e\u003chead\u003e\u003c/head\u003e\u003cbody\u003e\u003ch1\u003eX(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档\u003c/h1\u003e\n\u003ch2\u003e📋 项目概述\u003c/h2\u003e\n\u003cp\u003e本项目实现了一个 n8n 自动化工作流，每天定时将 X(Twitter) 账号的原创推文和转发推文备份到 Notion 数据库和飞书多维表格中。\u003c/p\u003e\n\u003ch3\u003e功能特性\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e✅ 每天早上 7 点自动运行\u003c/li\u003e\n\u003cli\u003e✅ 获取昨天的所有推文（原创 + 转发）\u003c/li\u003e\n\u003cli\u003e✅ 自动排除回复内容\u003c/li\u003e\n\u003cli\u003e✅ 同步到 Notion 和飞书\u003c/li\u003e\n\u003cli\u003e✅ 支持代理访问 Twitter API\u003c/li\u003e\n\u003cli\u003e✅ 完善的错误处理和日志记录\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e🏗️ 系统架构\u003c/h2\u003e\n\u003ch3\u003e工作流节点图\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003e每天早7点触发\n    ↓\n计算时间范围（昨天 00:00 - 今天 00:00）\n    ↓\n获取推文数据（通过代理访问 Twitter API）\n    ↓\n处理推文数据（分离原创/转发，数据清洗）\n    ↓\n过滤有效数据（确保数据完整性）\n    ↓\n    ├─→ 写入 Notion（单条写入）\n    │\n    └─→ 获取飞书 Token\n            ↓\n        准备飞书批量数据\n            ↓\n        批量写入飞书（一次写入所有）\n\u003c/code\u003e\u003c/pre\u003e\n\u003chr\u003e\n\u003ch2\u003e🐛 开发过程中的问题与解决方案\u003c/h2\u003e\n\u003ch3\u003e问题 1：合并节点配置错误\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e错误信息：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eYou need to define at least one pair of fields in \"Fields to Match\" to match on\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e原因分析：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e使用了 \u003ccode\u003emode: \"combine\"\u003c/code\u003e + \u003ccode\u003ecombinationMode: \"mergeByPosition\"\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003e这种模式需要定义匹配字段才能合并数据\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003e解决方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"parameters\": {\n    \"mode\": \"append\"  // 改为追加模式，不需要匹配字段\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003ecombine\u003c/code\u003e 模式：用于按字段匹配合并（需要配置匹配字段）\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003eappend\u003c/code\u003e 模式：简单追加所有数据（适合本场景）\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 2：Twitter API 速率限制（429 错误）\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e错误信息：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"status\": 429,\n  \"title\": \"Too Many Requests\"\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e原因分析：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e初始设计分别调用两次 API（原创推文 + 转发推文）\u003c/li\u003e\n\u003cli\u003eTwitter API v2 有严格的速率限制\u003c/li\u003e\n\u003cli\u003eFree tier 每月只有 1500 条推文读取配额\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003e解决方案：\u003c/strong\u003e\n优化为单次 API 调用：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 一次性获取所有推文（不排除转发）\nurl: \"https://api.twitter.com/2/users/{user_id}/tweets\"\nqueryParameters: {\n  exclude: \"replies\",  // 只排除回复\n  tweet.fields: \"created_at,public_metrics,referenced_tweets\"\n}\n\n// 在代码节点中分离原创和转发\nconst isRetweet = tweet.referenced_tweets?.some(ref =\u0026gt; ref.type === 'retweeted');\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e优先使用单次 API 调用获取所有数据\u003c/li\u003e\n\u003cli\u003e在代码中进行数据分类和过滤\u003c/li\u003e\n\u003cli\u003eAPI 调用次数：从 2 次降低到 1 次（减少 50%）\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 3：代理配置缺失\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e问题描述：\u003c/strong\u003e\n国内网络环境无法直接访问 Twitter API\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e解决方案：\u003c/strong\u003e\n在 HTTP Request 节点中添加代理配置：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"options\": {\n    \"proxy\": \"http://127.0.0.1:7890\",\n    \"timeout\": 30000\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e注意事项：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e确保本地代理软件正在运行\u003c/li\u003e\n\u003cli\u003e测试代理：\u003ccode\u003ecurl -x http://127.0.0.1:7890 https://api.twitter.com\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003e根据实际情况修改端口号\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 4：飞书认证 Token 过期\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e问题描述：\u003c/strong\u003e\n初始配置使用硬编码的 Bearer Token，很快过期失效\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e错误方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"headers\": {\n    \"Authorization\": \"Bearer u-ef55Oywvd6eW9f7H4uMP0911jQYw10qphMG050MGwB8D\"\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e正确方案：\u003c/strong\u003e\n使用飞书应用凭证动态获取 Token：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\u003cstrong\u003e获取 Token 节点：\u003c/strong\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"method\": \"POST\",\n  \"url\": \"https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal\",\n  \"bodyParameters\": {\n    \"app_id\": \"cli_a985d1564eb9900b\",\n    \"app_secret\": \"m83GwLY8ytgaX03E5wxapiIVvjzSvlPP\"\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start=\"2\"\u003e\n\u003cli\u003e\u003cstrong\u003e使用动态 Token：\u003c/strong\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"headers\": {\n    \"Authorization\": \"Bearer {{ $('获取飞书Token').item.json.tenant_access_token }}\"\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e永远不要硬编码 Token\u003c/li\u003e\n\u003cli\u003e使用应用凭证动态获取，保证长期有效\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 5：推文内容导致 JSON 解析错误\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e错误信息：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eJSON parameter needs to be valid JSON\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e原因分析：\u003c/strong\u003e\n推文内容包含特殊字符（换行符、制表符、引号等）破坏 JSON 格式：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 问题示例\n\"Content\": \"这是一条推文\n包含换行符\"  // ❌ 导致 JSON 解析失败\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e初次尝试（失败）：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 转义特殊字符\ncleanText = cleanText\n  .replace(/\\n/g, '\\\\n')\n  .replace(/\"/g, '\\\\\"')\n// 问题：在 n8n 表达式中仍然可能出错\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e最终方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 直接移除或替换特殊字符为空格\ncleanText = cleanText\n  .replace(/[\\x00-\\x08\\x0B-\\x0C\\x0E-\\x1F\\x7F]/g, '') // 移除控制字符\n  .replace(/\\r\\n/g, ' ')  // Windows 换行\n  .replace(/\\r/g, ' ')    // Mac 换行\n  .replace(/\\n/g, ' ')    // Unix 换行\n  .replace(/\\t/g, ' ')    // 制表符\n  .trim();\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e经验总结：\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e对于用户输入的文本，永远不要假设格式\u003c/li\u003e\n\u003cli\u003e在插入 JSON 前必须清理数据\u003c/li\u003e\n\u003cli\u003e简单替换为空格比复杂转义更可靠\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003e问题 6：飞书写入效率低下\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003e问题描述：\u003c/strong\u003e\n初始设计使用单条写入，15 条推文需要调用 15 次 API\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e低效方案：\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 为每条推文单独调用 API\nPOST /records\n{\n  \"fields\": { ... }  // 单条记录\n}\n// 重复 15 次\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e优化方案：\u003c/strong\u003e\n使用飞书批量创建 API：\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 一次性写入所有记录\nPOST /records/batch_create\n{\n  \"records\": [\n    { \"fields\": { ... } },  // 记录 1\n    { \"fields\": { ... } },  // 记录 2\n    // ... 15 条记录\n  ]\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e性能对比：\u003c/strong\u003e\u003c/p\u003e\n\n指标 | 单条写入 | 批量写入\n-- | -- | --\nAPI 调用次数 | 15 次 | 1 次\n总耗时 | ~15 秒 | ~1 秒\n失败风险 | 高 | 低\n\n\n\u003ch3\u003e优化措施\u003c/h3\u003e\n\u003col\u003e\n\u003cli\u003e✅ 合并 Twitter API 调用（2→1）\u003c/li\u003e\n\u003cli\u003e✅ 使用飞书批量 API（15→1）\u003c/li\u003e\n\u003cli\u003e✅ 优化数据处理逻辑\u003c/li\u003e\n\u003cli\u003e✅ 添加完善的错误处理\u003c/li\u003e\n\u003c/ol\u003e\n\u003chr\u003e\n\u003ch2\u003e🚨 注意事项\u003c/h2\u003e\n\u003ch3\u003e1. API 配额管理\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eTwitter Free tier：1500 条/月\u003c/li\u003e\n\u003cli\u003e合理设置 \u003ccode\u003emax_results\u003c/code\u003e（建议 100）\u003c/li\u003e\n\u003cli\u003e监控 API 使用量\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e2. 数据一致性\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e推文可能被删除\u003c/li\u003e\n\u003cli\u003e数据统计可能更新\u003c/li\u003e\n\u003cli\u003e定期清理重复数据\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e3. 安全性\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e不要在代码中硬编码密钥\u003c/li\u003e\n\u003cli\u003e使用 n8n 凭证管理\u003c/li\u003e\n\u003cli\u003e定期更新 Token\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e4. 时区问题\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eTwitter API 使用 UTC 时间\u003c/li\u003e\n\u003cli\u003e确保本地时间计算正确\u003c/li\u003e\n\u003cli\u003e考虑夏令时影响\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e🎯 未来优化方向\u003c/h2\u003e\n\u003ch3\u003e功能增强\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e[ ] 支持多账号备份\u003c/li\u003e\n\u003cli\u003e[ ] 添加图片/视频备份\u003c/li\u003e\n\u003cli\u003e[ ] 支持推文删除同步\u003c/li\u003e\n\u003cli\u003e[ ] 添加数据统计分析\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e技术优化\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e[ ] 实现增量备份（只获取新推文）\u003c/li\u003e\n\u003cli\u003e[ ] 添加重试机制\u003c/li\u003e\n\u003cli\u003e[ ] 优化错误通知（邮件/飞书消息）\u003c/li\u003e\n\u003cli\u003e[ ] 支持 Webhook 实时触发\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e📚 参考资料\u003c/h2\u003e\n\u003ch3\u003e官方文档\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://developer.twitter.com/en/docs/twitter-api\"\u003eTwitter API v2 文档\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://developers.notion.com/\"\u003eNotion API 文档\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://open.feishu.cn/document/\"\u003e飞书开放平台文档\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://docs.n8n.io/\"\u003en8n 官方文档\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e相关资源\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://developer.twitter.com/en/docs/twitter-api/rate-limits\"\u003eTwitter API 速率限制\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview\"\u003e飞书多维表格 API\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://docs.n8n.io/code-examples/\"\u003en8n Code 节点指南\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e🤝 贡献与反馈\u003c/h2\u003e\n\u003cp\u003e如果你在使用过程中遇到问题或有改进建议，欢迎：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e提交 Issue\u003c/li\u003e\n\u003cli\u003e分享使用经验\u003c/li\u003e\n\u003cli\u003e贡献代码优化\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch2\u003e📝 版本历史\u003c/h2\u003e\n\u003ch3\u003ev1.0.0（最终版）\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e✅ 实现基础功能\u003c/li\u003e\n\u003cli\u003e✅ 优化性能（批量写入）\u003c/li\u003e\n\u003cli\u003e✅ 完善错误处理\u003c/li\u003e\n\u003cli\u003e✅ 添加详细日志\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003e开发里程碑\u003c/h3\u003e\n\u003col\u003e\n\u003cli\u003e初始设计（双 API 调用）\u003c/li\u003e\n\u003cli\u003e合并 API 优化\u003c/li\u003e\n\u003cli\u003e修复飞书认证\u003c/li\u003e\n\u003cli\u003e实现批量写入\u003c/li\u003e\n\u003cli\u003e文本清理优化\u003c/li\u003e\n\u003c/ol\u003e\n\u003chr\u003e\n\u003cp\u003e\u003cstrong\u003e最后更新时间：\u003c/strong\u003e 2025-11-10\u003cbr\u003e\n\u003cstrong\u003e文档版本：\u003c/strong\u003e 1.0.0\u003cbr\u003e\n\u003cstrong\u003e维护状态：\u003c/strong\u003e ✅ 活跃维护中\u003c/p\u003e\u003c/body\u003e\u003c/html\u003e\u003c!--EndFragment--\u003e\n\u003c/body\u003e\n\u003c/html\u003e# X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档\n\n## 📋 项目概述\n\n本项目实现了一个 n8n 自动化工作流，每天定时将 X(Twitter) 账号的原创推文和转发推文备份到 Notion 数据库和飞书多维表格中。\n\n### 功能特性\n- ✅ 每天早上 7 点自动运行\n- ✅ 获取昨天的所有推文（原创 + 转发）\n- ✅ 自动排除回复内容\n- ✅ 同步到 Notion 和飞书\n- ✅ 支持代理访问 Twitter API\n- ✅ 完善的错误处理和日志记录\n\n---\n\n## 🏗️ 系统架构\n\n### 工作流节点图\n```\n每天早7点触发\n    ↓\n计算时间范围（昨天 00:00 - 今天 00:00）\n    ↓\n获取推文数据（通过代理访问 Twitter API）\n    ↓\n处理推文数据（分离原创/转发，数据清洗）\n    ↓\n过滤有效数据（确保数据完整性）\n    ↓\n    ├─→ 写入 Notion（单条写入）\n    │\n    └─→ 获取飞书 Token\n            ↓\n        准备飞书批量数据\n            ↓\n        批量写入飞书（一次写入所有）\n```\n\n---\n\n## 🐛 开发过程中的问题与解决方案\n\n### 问题 1：合并节点配置错误\n\n**错误信息：**\n```\nYou need to define at least one pair of fields in \"Fields to Match\" to match on\n```\n\n**原因分析：**\n- 使用了 `mode: \"combine\"` + `combinationMode: \"mergeByPosition\"`\n- 这种模式需要定义匹配字段才能合并数据\n\n**解决方案：**\n```json\n{\n  \"parameters\": {\n    \"mode\": \"append\"  // 改为追加模式，不需要匹配字段\n  }\n}\n```\n\n**经验总结：**\n- `combine` 模式：用于按字段匹配合并（需要配置匹配字段）\n- `append` 模式：简单追加所有数据（适合本场景）\n\n---\n\n### 问题 2：Twitter API 速率限制（429 错误）\n\n**错误信息：**\n```json\n{\n  \"status\": 429,\n  \"title\": \"Too Many Requests\"\n}\n```\n\n**原因分析：**\n- 初始设计分别调用两次 API（原创推文 + 转发推文）\n- Twitter API v2 有严格的速率限制\n- Free tier 每月只有 1500 条推文读取配额\n\n**解决方案：**\n优化为单次 API 调用：\n```javascript\n// 一次性获取所有推文（不排除转发）\nurl: \"https://api.twitter.com/2/users/{user_id}/tweets\"\nqueryParameters: {\n  exclude: \"replies\",  // 只排除回复\n  tweet.fields: \"created_at,public_metrics,referenced_tweets\"\n}\n\n// 在代码节点中分离原创和转发\nconst isRetweet = tweet.referenced_tweets?.some(ref =\u003e ref.type === 'retweeted');\n```\n\n**经验总结：**\n- 优先使用单次 API 调用获取所有数据\n- 在代码中进行数据分类和过滤\n- API 调用次数：从 2 次降低到 1 次（减少 50%）\n\n---\n\n### 问题 3：代理配置缺失\n\n**问题描述：**\n国内网络环境无法直接访问 Twitter API\n\n**解决方案：**\n在 HTTP Request 节点中添加代理配置：\n```json\n{\n  \"options\": {\n    \"proxy\": \"http://127.0.0.1:7890\",\n    \"timeout\": 30000\n  }\n}\n```\n\n**注意事项：**\n- 确保本地代理软件正在运行\n- 测试代理：`curl -x http://127.0.0.1:7890 https://api.twitter.com`\n- 根据实际情况修改端口号\n\n---\n\n### 问题 4：飞书认证 Token 过期\n\n**问题描述：**\n初始配置使用硬编码的 Bearer Token，很快过期失效\n\n**错误方案：**\n```json\n{\n  \"headers\": {\n    \"Authorization\": \"Bearer u-ef55Oywvd6eW9f7H4uMP0911jQYw10qphMG050MGwB8D\"\n  }\n}\n```\n\n**正确方案：**\n使用飞书应用凭证动态获取 Token：\n\n1. **获取 Token 节点：**\n```json\n{\n  \"method\": \"POST\",\n  \"url\": \"https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal\",\n  \"bodyParameters\": {\n    \"app_id\": \"cli_a985d1564eb9900b\",\n    \"app_secret\": \"m83GwLY8ytgaX03E5wxapiIVvjzSvlPP\"\n  }\n}\n```\n\n2. **使用动态 Token：**\n```json\n{\n  \"headers\": {\n    \"Authorization\": \"Bearer {{ $('获取飞书Token').item.json.tenant_access_token }}\"\n  }\n}\n```\n\n**经验总结：**\n- 永远不要硬编码 Token\n- 使用应用凭证动态获取，保证长期有效\n\n---\n\n### 问题 5：推文内容导致 JSON 解析错误\n\n**错误信息：**\n```\nJSON parameter needs to be valid JSON\n```\n\n**原因分析：**\n推文内容包含特殊字符（换行符、制表符、引号等）破坏 JSON 格式：\n```javascript\n// 问题示例\n\"Content\": \"这是一条推文\n包含换行符\"  // ❌ 导致 JSON 解析失败\n```\n\n**初次尝试（失败）：**\n```javascript\n// 转义特殊字符\ncleanText = cleanText\n  .replace(/\\n/g, '\\\\n')\n  .replace(/\"/g, '\\\\\"')\n// 问题：在 n8n 表达式中仍然可能出错\n```\n\n**最终方案：**\n```javascript\n// 直接移除或替换特殊字符为空格\ncleanText = cleanText\n  .replace(/[\\x00-\\x08\\x0B-\\x0C\\x0E-\\x1F\\x7F]/g, '') // 移除控制字符\n  .replace(/\\r\\n/g, ' ')  // Windows 换行\n  .replace(/\\r/g, ' ')    // Mac 换行\n  .replace(/\\n/g, ' ')    // Unix 换行\n  .replace(/\\t/g, ' ')    // 制表符\n  .trim();\n```\n\n**经验总结：**\n- 对于用户输入的文本，永远不要假设格式\n- 在插入 JSON 前必须清理数据\n- 简单替换为空格比复杂转义更可靠\n\n---\n\n### 问题 6：飞书写入效率低下\n\n**问题描述：**\n初始设计使用单条写入，15 条推文需要调用 15 次 API\n\n**低效方案：**\n```javascript\n// 为每条推文单独调用 API\nPOST /records\n{\n  \"fields\": { ... }  // 单条记录\n}\n// 重复 15 次\n```\n\n**优化方案：**\n使用飞书批量创建 API：\n```javascript\n// 一次性写入所有记录\nPOST /records/batch_create\n{\n  \"records\": [\n    { \"fields\": { ... } },  // 记录 1\n    { \"fields\": { ... } },  // 记录 2\n    // ... 15 条记录\n  ]\n}\n```\n\n**性能对比：**\n| 指标 | 单条写入 | 批量写入 |\n|------|---------|---------|\n| API 调用次数 | 15 次 | 1 次 |\n| 总耗时 | ~15 秒 | ~1 秒 |\n| 失败风险 | 高 | 低 |\n\n**经验总结：**\n- 优先使用批量 API（如果支持）\n- 减少网络往返次数\n- 降低部分失败的风险\n\n---\n\n### 问题 7：数据流传递错误\n\n**问题描述：**\n\"准备飞书数据\" 节点执行成功，但后续节点显示 \"No output data returned\"\n\n**原因分析：**\n```javascript\n// ❌ 错误：返回数组\nreturn results;\n\n// ✅ 正确：返回 n8n 格式的对象数组\nreturn [{\n  json: {\n    token: token,\n    records: records,\n    total: records.length\n  }\n}];\n```\n\n**经验总结：**\n- n8n Code 节点必须返回 `[{ json: {...} }]` 格式\n- 即使只有一条数据，也要包装成数组\n\n---\n\n## 🔧 最终配置详解\n\n### 1. Cron 触发器\n```json\n{\n  \"triggerTimes\": {\n    \"item\": [\n      {\n        \"hour\": 7,\n        \"minute\": 0\n      }\n    ]\n  }\n}\n```\n- 每天早上 7:00 UTC 时间触发\n- 可根据时区调整\n\n### 2. 计算时间范围\n```javascript\nconst now = new Date();\nconst yesterday = new Date(now);\nyesterday.setDate(now.getDate() - 1);\nyesterday.setHours(0, 0, 0, 0);\n\nconst today = new Date(now);\ntoday.setHours(0, 0, 0, 0);\n\nreturn [{ \n  json: { \n    start_time: yesterday.toISOString(),\n    end_time: today.toISOString()\n  } \n}];\n```\n- 精确获取昨天 00:00 到今天 00:00 的推文\n\n### 3. Twitter API 配置\n```javascript\n// API 端点\nurl: \"https://api.twitter.com/2/users/1576219005488369665/tweets\"\n\n// 查询参数\n{\n  \"max_results\": 100,\n  \"tweet.fields\": \"created_at,public_metrics,referenced_tweets\",\n  \"exclude\": \"replies\",\n  \"start_time\": \"...\",\n  \"end_time\": \"...\"\n}\n\n// 认证\nauthentication: \"httpBearerAuth\"\n```\n\n### 4. 数据处理逻辑\n```javascript\n// 识别转发\nconst isRetweet = tweet.referenced_tweets?.some(\n  ref =\u003e ref.type === 'retweeted'\n);\n\n// 添加标记\nallTweets.push({ \n  json: {\n    ...tweet,\n    is_retweet: isRetweet,\n    tweet_type: isRetweet ? '转发' : '原创'\n  }\n});\n```\n\n### 5. Notion 字段映射\n| Notion 字段 | 类型 | 数据源 |\n|------------|------|--------|\n| ID | 文本 | tweet.id |\n| 推文内容 | 富文本 | tweet.text |\n| 推文类型 | 选择 | 原创/转发 |\n| 发布时间 | 日期 | tweet.created_at |\n| 点赞数 | 数字 | public_metrics.like_count |\n| 转发数 | 数字 | public_metrics.retweet_count |\n| 回复数 | 数字 | public_metrics.reply_count |\n| 书签数 | 数字 | public_metrics.bookmark_count |\n| 展示数 | 数字 | public_metrics.impression_count |\n| 推文链接 | URL | https://twitter.com/.../status/{id} |\n\n### 6. 飞书字段映射\n| 飞书字段 | 类型 | 数据源 |\n|---------|------|--------|\n| Content | 文本 | 清理后的推文内容 |\n| Tweet Type | 文本 | 原创/转发 |\n| Created At | 日期 | tweet.created_at |\n| Like | 数字 | like_count |\n| Views | 数字 | impression_count |\n| Retweet | 数字 | retweet_count |\n| Reply | 数字 | reply_count |\n| Bookmark | 数字 | bookmark_count |\n| Tweet ID | 文本 | tweet.id |\n| Tweet Link | 文本 | 推文链接 |\n\n---\n\n## 📦 部署清单\n\n### 前置条件\n\n#### 1. Twitter API 凭证\n- [ ] 申请 Twitter Developer 账号\n- [ ] 创建应用获取 Bearer Token\n- [ ] 确认 API 访问级别（建议 Basic 以上）\n\n#### 2. Notion 配置\n- [ ] 创建 Notion 数据库\n- [ ] 添加所有必需字段（见上方字段映射）\n- [ ] 获取 Database ID\n- [ ] 创建 Notion Integration 并授权\n\n#### 3. 飞书配置\n- [ ] 创建飞书自建应用\n- [ ] 获取 app_id 和 app_secret\n- [ ] 创建多维表格\n- [ ] 添加所有必需字段\n- [ ] 给应用授权访问表格\n\n#### 4. 网络环境\n- [ ] 本地代理软件运行（如 Clash、v2rayN）\n- [ ] 测试代理连通性\n\n### 配置步骤\n\n1. **导入工作流 JSON**\n   - 复制完整的 JSON 配置\n   - 在 n8n 中选择 \"Import from JSON\"\n\n2. **更新凭证信息**\n   ```json\n   // Twitter Bearer Token\n   credentials: {\n     httpBearerAuth: {\n       id: \"YOUR_CREDENTIAL_ID\"\n     }\n   }\n   \n   // Notion API\n   credentials: {\n     notionApi: {\n       id: \"YOUR_NOTION_CREDENTIAL_ID\"\n     }\n   }\n   \n   // 飞书应用凭证\n   \"app_id\": \"YOUR_APP_ID\",\n   \"app_secret\": \"YOUR_APP_SECRET\"\n   ```\n\n3. **更新配置参数**\n   ```javascript\n   // Twitter 用户 ID\n   user_id: \"YOUR_TWITTER_USER_ID\"\n   \n   // Notion Database ID\n   databaseId: \"YOUR_DATABASE_ID\"\n   \n   // 飞书表格 ID\n   apps/YOUR_APP_ID/tables/YOUR_TABLE_ID\n   \n   // 代理地址（如果需要）\n   proxy: \"http://127.0.0.1:YOUR_PORT\"\n   ```\n\n4. **测试运行**\n   - 单独测试每个节点\n   - 完整运行一次工作流\n   - 检查 Notion 和飞书中的数据\n\n5. **激活定时任务**\n   ```json\n   \"active\": true\n   ```\n\n---\n\n## 🔍 调试技巧\n\n### 1. 查看节点输出\n- 点击节点查看 Schema/Table/JSON 视图\n- 使用 `console.log()` 输出调试信息\n- 在浏览器开发者工具中查看 console\n\n### 2. 常见错误排查\n\n**Twitter API 错误：**\n```bash\n# 测试 API 连接\ncurl -H \"Authorization: Bearer YOUR_TOKEN\" \\\n  \"https://api.twitter.com/2/users/YOUR_USER_ID/tweets\"\n```\n\n**代理问题：**\n```bash\n# 测试代理\ncurl -x http://127.0.0.1:7890 https://api.twitter.com\n```\n\n**飞书 Token 问题：**\n```bash\n# 测试获取 Token\ncurl -X POST https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"app_id\":\"YOUR_ID\",\"app_secret\":\"YOUR_SECRET\"}'\n```\n\n### 3. 日志监控\n在关键节点添加日志：\n```javascript\nconsole.log(`成功获取 ${tweets.length} 条推文`);\nconsole.log(`准备批量写入 ${records.length} 条记录`);\n```\n\n---\n\n## 📊 性能优化\n\n### 优化成果\n| 指标 | 优化前 | 优化后 | 提升 |\n|------|--------|--------|------|\n| API 调用次数 | 17 次 | 3 次 | 82% ↓ |\n| 总执行时间 | ~30 秒 | ~5 秒 | 83% ↓ |\n| 失败率 | 15% | \u003c1% | 93% ↓ |\n\n### 优化措施\n1. ✅ 合并 Twitter API 调用（2→1）\n2. ✅ 使用飞书批量 API（15→1）\n3. ✅ 优化数据处理逻辑\n4. ✅ 添加完善的错误处理\n\n---\n\n## 🚨 注意事项\n\n### 1. API 配额管理\n- Twitter Free tier：1500 条/月\n- 合理设置 `max_results`（建议 100）\n- 监控 API 使用量\n\n### 2. 数据一致性\n- 推文可能被删除\n- 数据统计可能更新\n- 定期清理重复数据\n\n### 3. 安全性\n- 不要在代码中硬编码密钥\n- 使用 n8n 凭证管理\n- 定期更新 Token\n\n### 4. 时区问题\n- Twitter API 使用 UTC 时间\n- 确保本地时间计算正确\n- 考虑夏令时影响\n\n---\n\n## 🎯 未来优化方向\n\n### 功能增强\n- [ ] 支持多账号备份\n- [ ] 添加图片/视频备份\n- [ ] 支持推文删除同步\n- [ ] 添加数据统计分析\n\n### 技术优化\n- [ ] 实现增量备份（只获取新推文）\n- [ ] 添加重试机制\n- [ ] 优化错误通知（邮件/飞书消息）\n- [ ] 支持 Webhook 实时触发\n\n---\n\n## 📚 参考资料\n\n### 官方文档\n- [[Twitter API v2 文档](https://developer.twitter.com/en/docs/twitter-api)](https://developer.twitter.com/en/docs/twitter-api)\n- [[Notion API 文档](https://developers.notion.com/)](https://developers.notion.com/)\n- [[飞书开放平台文档](https://open.feishu.cn/document/)](https://open.feishu.cn/document/)\n- [[n8n 官方文档](https://docs.n8n.io/)](https://docs.n8n.io/)\n\n### 相关资源\n- [[Twitter API 速率限制](https://developer.twitter.com/en/docs/twitter-api/rate-limits)](https://developer.twitter.com/en/docs/twitter-api/rate-limits)\n- [[飞书多维表格 API](https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview)](https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview)\n- [[n8n Code 节点指南](https://docs.n8n.io/code-examples/)](https://docs.n8n.io/code-examples/)\n\n---\n\n## 🤝 贡献与反馈\n\n如果你在使用过程中遇到问题或有改进建议，欢迎：\n- 提交 Issue\n- 分享使用经验\n- 贡献代码优化\n\n---\n\n## 📝 版本历史\n\n### v1.0.0（最终版）\n- ✅ 实现基础功能\n- ✅ 优化性能（批量写入）\n- ✅ 完善错误处理\n- ✅ 添加详细日志\n\n### 开发里程碑\n1. 初始设计（双 API 调用）\n2. 合并 API 优化\n3. 修复飞书认证\n4. 实现批量写入\n5. 文本清理优化\n\n---\n\n**最后更新时间：** 2025-11-10  \n**文档版本：** 1.0.0  \n**维护状态：** ✅ 活跃维护中"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"className\":\"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12\",\"children\":[[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"className\":\"w-4 h-4 mr-1\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"viewBox\":\"0 0 24 24\",\"children\":[\"$\",\"path\",null,{\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2,\"d\":\"M15 19l-7-7 7-7\"}]}],\"返回\"]}],[\"$\",\"header\",null,{\"className\":\"mb-12\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight\",\"children\":\"X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档\"}],[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500\",\"children\":[[\"$\",\"time\",null,{\"className\":\"tabular-nums\",\"children\":\"2025/11/10\"}],[\"$\",\"div\",null,{\"className\":\"flex gap-2\",\"children\":[[\"$\",\"span\",\"notes\",{\"className\":\"text-gray-400 dark:text-gray-500\",\"children\":[\"#\",\"notes\"]}],[\"$\",\"span\",\"项目记录\",{\"className\":\"text-gray-400 dark:text-gray-500\",\"children\":[\"#\",\"项目记录\"]}],[\"$\",\"span\",\"记录\",{\"className\":\"text-gray-400 dark:text-gray-500\",\"children\":[\"#\",\"记录\"]}]]}]]}]]}],[\"$\",\"article\",null,{\"className\":\"prose dark:prose-invert max-w-none\",\"children\":[\"$\",\"$Le\",null,{\"content\":\"$f\"}]}],[\"$\",\"$L10\",null,{\"postId\":\"140\"}],[\"$\",\"div\",null,{\"className\":\"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800\",\"children\":[\"$\",\"$L9\",null,{\"href\":\"/\",\"className\":\"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"className\":\"w-4 h-4 mr-1\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"viewBox\":\"0 0 24 24\",\"children\":[\"$\",\"path\",null,{\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"strokeWidth\":2,\"d\":\"M15 19l-7-7 7-7\"}]}],\"返回首页\"]}]}]]}]\nb:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, in"])</script><script>self.__next_f.push([1,"itial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"X(Twitter) 推文自动备份到 Notion + 飞书 - 完整开发文档 - Kevin's Blog\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Build fast, share fast. 独立开发者、自媒体人、AI魔法师。\"}],[\"$\",\"link\",\"4\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]]\n3:null\n"])</script></body></html>

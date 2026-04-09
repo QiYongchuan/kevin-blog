@@ -16,7 +16,7 @@ export default async function Home() {
         </h1>
         <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
           <p>
-            Kevin，90后，青岛，INFP，ADHD确诊者。
+            多多，90后，青岛，INFP，ADHD确诊者。
           </p>
           <p>
             从985农学研究生退学，二学位转码成为程序员。

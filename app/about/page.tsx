@@ -18,7 +18,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
             <p>
-              Kevin（多多），90后，青岛，INFP，ADHD确诊者。
+              多多，90后，青岛，INFP，ADHD确诊者。
             </p>
             <p>
               从985农学研究生退学，二学位转码成为程序员。
@@ -110,7 +110,7 @@ export default function AboutPage() {
               </svg>
             </a>
             <a
-              href="mailto:hello@kevin.blog"
+              href="mailto:hello@duoduo.me"
               className="flex items-center justify-between py-3 border-b border-gray-100 dark:border-gray-800 hover:text-gray-600 dark:hover:text-gray-300 transition-colors group"
             >
               <div className="flex items-center">
