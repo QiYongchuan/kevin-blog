@@ -10,7 +10,19 @@ interface MarkdownRendererProps {
   content: string;
 }
 
+// 将 HTML <img> 标签转换为 Markdown 格式
+function preprocessContent(content: string): string {
+  // 匹配 <img src="..." alt="..." width="..." height="..." /> 格式
+  const imgRegex = /<img[^>]+src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*\/?>/gi;
+
+  return content.replace(imgRegex, (match, src, alt) => {
+    return `![${alt || 'image'}](${src})`;
+  });
+}
+
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
+  const processedContent = preprocessContent(content);
+
   return (
     <div className="prose dark:prose-invert max-w-none">
       <ReactMarkdown
@@ -115,7 +127,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
         }}
       >
-        {content}
+        {processedContent}
       </ReactMarkdown>
     </div>
   );
