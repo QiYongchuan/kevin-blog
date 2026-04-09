@@ -1,24 +1,20 @@
 import PostList from "@/components/PostList";
 import { getAllPosts } from "@/lib/api";
-import LoadMoreButton from "@/components/LoadMoreButton";
 
 // ISR: 每10分钟重新生成页面
 export const revalidate = 600;
 
 export default async function Home() {
-  const allPosts = await getAllPosts();
-  const initialPosts = allPosts.slice(0, 10);
-  const hasMore = allPosts.length > 10;
-  const total = allPosts.length;
+  const posts = await getAllPosts();
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* TLDR Section - 极简风格 */}
-      <section className="mb-20">
+      <section className="mb-20 text-center">
         <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight">
           TLDR
         </h1>
-        <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+        <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl mx-auto">
           <p>
             多多，90后，青岛，INFP，ADHD确诊者。
           </p>
@@ -37,13 +33,7 @@ export default async function Home() {
 
       {/* Posts Section - 按年份分组 */}
       <section>
-        <PostList posts={initialPosts} />
-        <LoadMoreButton
-          allPosts={allPosts}
-          initialCount={10}
-          hasMore={hasMore}
-          total={total}
-        />
+        <PostList posts={posts} />
       </section>
     </div>
   );

@@ -55,9 +55,9 @@ export async function getAllPosts(): Promise<Post[]> {
 
     // 过滤逻辑：
     // 1. 作者自己创建的
-    // 2. 不包含 hide/hidden 标签
-    // 3. 不包含 thought 标签（thought 只显示在 thoughts 页面）
-    // 4. 如果有 blog 标签则优先显示（可选）
+    // 2. 必须有 blog 标签才显示在首页
+    // 3. 不包含 hide/hidden 标签
+    // 4. 不包含 thought 标签（thought 只显示在 thoughts 页面）
     const authorIssues = issues.filter((issue: GitHubIssue) => {
       if (!issue.user || issue.user.login !== REPO_OWNER) return false;
 
@@ -72,6 +72,11 @@ export async function getAllPosts(): Promise<Post[]> {
 
       // 排除 thought 标签（只在 thoughts 页面显示）
       if (labels.some((l: string) => l.toLowerCase() === 'thought')) {
+        return false;
+      }
+
+      // 必须有 blog 标签才显示
+      if (!labels.some((l: string) => l.toLowerCase() === 'blog')) {
         return false;
       }
 

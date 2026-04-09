@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostById, getAllPosts } from "@/lib/api";
+import { getPostById } from "@/lib/api";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import Comments from "@/components/Comments";
 import { formatDate } from "@/lib/utils";
@@ -14,10 +14,39 @@ interface PostPageProps {
   }>;
 }
 
+interface GitHubIssue {
+  number: number;
+  user?: {
+    login: string;
+  };
+  labels?: (string | { name?: string })[];
+}
+
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({
-    id: post.id.toString(),
+  // 获取所有非隐藏的文章ID用于静态生成
+  const issues = await fetch(
+    `https://api.github.com/repos/QiYongchuan/MyGitBlog/issues?state=all&per_page=100&sort=created&direction=desc`,
+    {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        ...(process.env.NEXT_PUBLIC_GITHUB_TOKEN && {
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+        }),
+      },
+    }
+  ).then(res => res.json()).catch(() => []);
+
+  if (!Array.isArray(issues)) return [];
+
+  // 过滤掉 hide/hidden 标签的
+  const visibleIssues = issues.filter((issue: GitHubIssue) => {
+    if (!issue.user || issue.user.login !== 'QiYongchuan') return false;
+    const labels = issue.labels?.map((l) => typeof l === 'string' ? l : l.name || '') || [];
+    return !labels.some((l: string) => l.toLowerCase() === 'hide' || l.toLowerCase() === 'hidden');
+  });
+
+  return visibleIssues.map((issue: GitHubIssue) => ({
+    id: issue.number.toString(),
   }));
 }
 

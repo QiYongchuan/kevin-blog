@@ -9,28 +9,32 @@ export default async function ThoughtsPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <header className="mb-16">
-        <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-          Thoughts
+      {/* TLDR 标题区 */}
+      <section className="mb-16 text-center">
+        <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight">
+          TLDR
         </h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          碎片化的思考，随时记录的想法。
+        <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl mx-auto border-l-4 border-gray-200 dark:border-gray-700 pl-6 text-left">
+          这里记录我在日常生活中的碎片化、未经（太多）思想审查的想法。
         </p>
-      </header>
+      </section>
 
-      <div className="space-y-0 divide-y divide-gray-100 dark:divide-gray-800">
+      {/* Thoughts 卡片列表 */}
+      <div className="space-y-6">
         {thoughts.map((thought) => (
-          <div
+          <article
             key={thought.id}
-            className="py-8 group"
+            className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
-            <p className="text-gray-800 dark:text-gray-200 leading-relaxed mb-3 text-lg">
-              {thought.content}
-            </p>
-            <time className="text-sm text-gray-400 dark:text-gray-500 tabular-nums">
+            <div className="prose dark:prose-invert max-w-none">
+              <div className="text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-wrap">
+                {thought.content}
+              </div>
+            </div>
+            <time className="block mt-4 text-sm text-gray-400 dark:text-gray-500 text-right tabular-nums">
               {formatDate(thought.created_at)}
             </time>
-          </div>
+          </article>
         ))}
       </div>
     </div>
