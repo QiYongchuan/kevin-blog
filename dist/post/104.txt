@@ -1,0 +1,51 @@
+3:I[4707,[],""]
+5:I[6423,[],""]
+6:I[9294,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"Providers"]
+7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],""]
+8:I[7683,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"default"]
+4:["id","104","d"]
+0:["cD1jzXGy9J5EqAeza_jAy",[[["",{"children":["post",{"children":[["id","104","d"],{"children":["__PAGE__?{\"id\":\"104\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","104","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/fbfecf6495749b0f.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"文章"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"项目"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"关于"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
+a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
+c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
+b:Tcfe,# ADHDer的人，拥有跑车级的大脑，但是刹车坏掉了
+
+在新加坡地铁上，每天早上上班的路上，差不多 10 天时间，10 个小时左右听完了这本书。
+
+最开始发现这本书是看到推特上有人分享，ADHD(注意力缺陷)会有一种模式，**hyperfocus**，即注意力高度集中模式，表现在当投入感兴趣的事情的时候，往往几个小时出不来，会一直沉浸在其中。所以 ADHDer 要尽量避免晚上的时候，写作、编程等投入的工作。
+
+在我某一次写完代码，又到了凌晨两点的时候，看到了这个帖子，愈发感觉自己是这样的。于是在推荐下看了这本关于 ADHD 的书，一位美国心理学家（同时也是 ADHDer）写的书。在书里看到了太多类似的经历了：
+
+- 小学的冬天，手套丢了太多副，经常是忘记放到哪里了，有时候丢一只，有时候两只一起丢，就这样光手套差不多买了近十来个了。
+- 高中的时候，语文考试写作文，最头疼的是纠结开头和题目，要想半天，如果想不到一个足够刺激（或者说精彩）的题目，往往怎么也写不下去。
+- 大学的时候，经常忘记 ddl，会想不起交实验报告，会拖延。
+- 一开始学写代码的时候，经常拼错一个单词，搞错单词字母的顺序，看半天也看不出什么来。（ADHDer 往往也有阅读障碍）
+
+以及回想过去的经历，经常会被指责太粗心了。这些都是 ADHD 的一大特征，**分心**。
+
+
+### ADHD 的好处：创造力与高度集中模式 (hyperfocus)
+
+分心是因为大脑总是在寻找足够刺激的想法，这带来了很多神奇的点子。无论是白日梦，还是各种奇怪的想法，总是会时不时涌现。
+
+在我接触 ChatGPT 和各种眼花缭乱好玩的 AI 应用时，我差不多每天都涌现出各种衍生的、类似的、升级的想法，各种让我自己眼前一亮、一想到就兴奋得睡不着觉的好玩的点子。（我甚至专门开了一个博客记录这些想法）
+
+但正如开头提到的，ADHDer 的大脑，拥有跑车级性能的大脑，但**刹车不好使**。往往想到这个，搞一搞，突然又有了新的想法，又跳出去搞别的了。容易被别的东西吸引，容易被自己新的想法吸引。
+
+
+## 关于 hyperfocus 模式
+
+我最开始了解 ADHD 其实是从了解这个模式开始的。我一直以为注意力缺陷就是多动症，就是集中不了注意力。后来关注的一个博主在法国读博，讲了一系列 hyperfocus 下的行为特点：熬夜、高强度投入等等，我才开始进一步了解。（这段写得不好，毕竟我可能是 ADHD，我的注意力又跑了：）
+
+书中提到 hyperfocus 的描述：当遇到感兴趣的事，投入进去时，大脑神经就像排列整齐的猎犬一样，高度集中。而平时，ADHDer 的神经，就像打碎了玻璃温度计里的水银一样，四散。
+
+就先写这些吧，毕竟我的注意力又跑丢了。而且现在已经是凌晨 1 点了，进入危险时间了，不能深夜写作……
+
+*2024.9.12 凌晨12：57 于新加坡*
+
+
+
+![e845ae307c6c18b74c1d0627ca8feaa](https://github.com/user-attachments/assets/77f6d37f-776b-4ec6-8f33-d799de1cdc36)
+
+2:["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回"]}],["$","header",null,{"className":"mb-12","children":[["$","h1",null,{"className":"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight","children":"跑车级大脑，但刹车失灵是一种什么体验：ADHD的困扰与天赋"}],["$","div",null,{"className":"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500","children":[["$","time",null,{"className":"tabular-nums","children":"2024/10/11"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","daily",{"className":"text-gray-400 dark:text-gray-500","children":["#","daily"]}]]}]]}]]}],["$","article",null,{"className":"prose dark:prose-invert max-w-none","children":["$","$La",null,{"content":"$b"}]}],["$","$Lc",null,{"postId":"104"}],["$","div",null,{"className":"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800","children":["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回首页"]}]}]]}]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"跑车级大脑，但刹车失灵是一种什么体验：ADHD的困扰与天赋 - Kevin's Blog"}],["$","meta","3",{"name":"description","content":"Build fast, share fast. 独立开发者、自媒体人、AI魔法师。"}],["$","link","4",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+1:null

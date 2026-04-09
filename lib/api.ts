@@ -43,8 +43,9 @@ async function fetchGitHubAPI(url: string) {
 // 从 GitHub Issues 获取文章
 export async function getAllPosts(): Promise<Post[]> {
   try {
+    // 先获取所有 issues（不分页，最多 100 条）
     const issues = await fetchGitHubAPI(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?state=all&per_page=20&sort=created&direction=desc`
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?state=all&per_page=100&sort=created&direction=desc`
     );
 
     if (!issues || !Array.isArray(issues)) {
@@ -52,10 +53,30 @@ export async function getAllPosts(): Promise<Post[]> {
       return getFallbackPosts();
     }
 
-    // 过滤出作者自己创建的 issues（排除评论）
-    const authorIssues = issues.filter((issue: GitHubIssue) =>
-      issue.user && issue.user.login === REPO_OWNER
-    );
+    // 过滤逻辑：
+    // 1. 作者自己创建的
+    // 2. 不包含 hide/hidden 标签
+    // 3. 不包含 thought 标签（thought 只显示在 thoughts 页面）
+    // 4. 如果有 blog 标签则优先显示（可选）
+    const authorIssues = issues.filter((issue: GitHubIssue) => {
+      if (!issue.user || issue.user.login !== REPO_OWNER) return false;
+
+      const labels = issue.labels?.map((label: string | GitHubLabel) =>
+        typeof label === 'string' ? label : label.name
+      ) || [];
+
+      // 排除 hide/hidden 标签
+      if (labels.some((l: string) => l.toLowerCase() === 'hide' || l.toLowerCase() === 'hidden')) {
+        return false;
+      }
+
+      // 排除 thought 标签（只在 thoughts 页面显示）
+      if (labels.some((l: string) => l.toLowerCase() === 'thought')) {
+        return false;
+      }
+
+      return true;
+    });
 
     const posts: Post[] = authorIssues.map((issue: GitHubIssue) => ({
       id: issue.number,
@@ -73,6 +94,62 @@ export async function getAllPosts(): Promise<Post[]> {
   } catch (error) {
     console.error('Error fetching posts:', error);
     return getFallbackPosts();
+  }
+}
+
+// 分页获取文章
+export async function getPostsPaginated(page: number = 1, pageSize: number = 10): Promise<{ posts: Post[]; hasMore: boolean; total: number }> {
+  try {
+    const issues = await fetchGitHubAPI(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?state=all&per_page=100&sort=created&direction=desc`
+    );
+
+    if (!issues || !Array.isArray(issues)) {
+      return { posts: getFallbackPosts(), hasMore: false, total: 3 };
+    }
+
+    // 同样的过滤逻辑
+    const authorIssues = issues.filter((issue: GitHubIssue) => {
+      if (!issue.user || issue.user.login !== REPO_OWNER) return false;
+
+      const labels = issue.labels?.map((label: string | GitHubLabel) =>
+        typeof label === 'string' ? label : label.name
+      ) || [];
+
+      if (labels.some((l: string) => l.toLowerCase() === 'hide' || l.toLowerCase() === 'hidden')) {
+        return false;
+      }
+
+      if (labels.some((l: string) => l.toLowerCase() === 'thought')) {
+        return false;
+      }
+
+      return true;
+    });
+
+    const sortedPosts = authorIssues.map((issue: GitHubIssue) => ({
+      id: issue.number,
+      title: issue.title,
+      content: issue.body || '',
+      created_at: issue.created_at,
+      labels: issue.labels?.map((label: string | GitHubLabel) =>
+        typeof label === 'string' ? label : label.name
+      ) || [],
+    })).sort((a: Post, b: Post) =>
+      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+
+    const total = sortedPosts.length;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const paginatedPosts = sortedPosts.slice(startIndex, endIndex);
+    const hasMore = endIndex < total;
+
+    return { posts: paginatedPosts, hasMore, total };
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    const fallbackPosts = getFallbackPosts();
+    return { posts: fallbackPosts, hasMore: false, total: fallbackPosts.length };
   }
 }
 

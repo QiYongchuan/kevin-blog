@@ -1,0 +1,92 @@
+3:I[4707,[],""]
+5:I[6423,[],""]
+6:I[9294,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"Providers"]
+7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],""]
+8:I[7683,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"default"]
+4:["id","88","d"]
+0:["cD1jzXGy9J5EqAeza_jAy",[[["",{"children":["post",{"children":[["id","88","d"],{"children":["__PAGE__?{\"id\":\"88\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","88","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/fbfecf6495749b0f.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"文章"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"项目"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"关于"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
+a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
+c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
+b:Tba5,一句话介绍：@RequestMapping就是用来做路由映射的，即在Controller中，处理url地址以及前端发送的方法，进一步转到不同的方法中进行下一步的处理。
+
+（补充：当然不仅限于URL路径，还可以设置（可选地）请求方法（如GET、POST等）、请求参数、请求头等条件）
+```
+@RequestMapping(value = "/users", method = RequestMethod.GET)
+public List<User> getUsers() {
+    // 方法体，返回用户列表
+}
+
+@RequestMapping(value = "/users", method = RequestMethod.POST, consumes = "application/json")
+public User addUser(@RequestBody User user) {
+    // 方法体，添加一个新用户
+}
+
+```
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/7eb5d7e0-83fe-4354-9206-1618ee109fc8)
+1.@RequestMapping  默认post、get请求均可以，可以在后面写上具体的方法，也可以直接用另一种等价的写法：
+@PostMapping 和@GetMapping
+
+2. 用实体来接受形参时：注意请求发送的形式不同：请求体（body）和URL查询参数传递数据
+具体可参考 #87 
+
+```
+ @RequestMapping("/Entiy")
+    public String entity( User user){
+        System.out.println(user);
+        return "实体类接收参数";
+    }
+    @RequestMapping("/Entiy2")
+    // 如果前端传递的参数是json格式的，
+    // 那么可以使用@RequestBody
+    public String entity2(@RequestBody User user){
+        System.out.println(user);
+        return "实体类接收参数Json";
+    }
+```
+
+3.关于传参接收以及实体
+
+#### 多个参数自动装箱（boxing）成一个JavaBean
+
+* 什么是javaBean：一种特殊的Java类。
+  * 所有的成员变量都是私有的private的
+  * 有一个不带参数的构造函数
+  * 通过一组get、set函数来读取或者修改属性的值
+  * 以上可以通过右键-生成-来对应生成
+* 实体Bean：EntityBean
+  * 跟数据库的表可以实现一一对应
+  * Bean的名字，与表的名字完成相同（Emp）
+  * Bean中的属性名，与表的字段名相同（empno、ename、hiredate、sal）
+  * 属性的类型，与表中字段的类型兼容
+  * 实体Bean的一个实例（instance）对应数据库数据表中的一条记录
+
+
+
+* JDO：Java Data Obiect ： java与关系数据库的关系
+     *  Data：数据库中的内容，永久存在数据库中的。
+  * Object：JAvaBean的实例，存放在内存中。
+  * 持久化操作，将内存上的东西存入到数据库中
+
+* 装箱过程
+  * Step1：读取URL请求参数列表
+
+```http
+h5?empno=11&sal=1000&hiredate=2022-2-22
+```
+
+* setp2:如果函数形参是一个JavaBean，系统会自动调用该Javabean的一组set函数，来实现属性的赋值。这个过程称为自动装箱
+
+```java
+   @ResponseBody
+    @RequestMapping("h5")
+    public String h5(Emp emp)
+    {
+        return  "<h1>"+ emp + "</h1>";
+    }
+```
+
+前提是该javaBean中有相应的属性
+2:["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回"]}],["$","header",null,{"className":"mb-12","children":[["$","h1",null,{"className":"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight","children":"Springboot学习笔记：@RequestMapping"}],["$","div",null,{"className":"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500","children":[["$","time",null,{"className":"tabular-nums","children":"2024/03/18"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","notes",{"className":"text-gray-400 dark:text-gray-500","children":["#","notes"]}]]}]]}]]}],["$","article",null,{"className":"prose dark:prose-invert max-w-none","children":["$","$La",null,{"content":"$b"}]}],["$","$Lc",null,{"postId":"88"}],["$","div",null,{"className":"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800","children":["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回首页"]}]}]]}]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Springboot学习笔记：@RequestMapping - Kevin's Blog"}],["$","meta","3",{"name":"description","content":"Build fast, share fast. 独立开发者、自媒体人、AI魔法师。"}],["$","link","4",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+1:null

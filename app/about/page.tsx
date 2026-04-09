@@ -18,7 +18,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
             <p>
-              多多，90后，青岛，INFP，ADHD确诊者。
+              我真的没有拼多多，你可以叫我多多，90后，现居青岛，INFP，ADHD确诊者。
             </p>
             <p>
               从985农学研究生退学，二学位转码成为程序员。

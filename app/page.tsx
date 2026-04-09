@@ -1,11 +1,15 @@
 import PostList from "@/components/PostList";
 import { getAllPosts } from "@/lib/api";
+import LoadMoreButton from "@/components/LoadMoreButton";
 
 // ISR: 每10分钟重新生成页面
 export const revalidate = 600;
 
 export default async function Home() {
-  const posts = await getAllPosts();
+  const allPosts = await getAllPosts();
+  const initialPosts = allPosts.slice(0, 10);
+  const hasMore = allPosts.length > 10;
+  const total = allPosts.length;
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -33,7 +37,13 @@ export default async function Home() {
 
       {/* Posts Section - 按年份分组 */}
       <section>
-        <PostList posts={posts} />
+        <PostList posts={initialPosts} />
+        <LoadMoreButton
+          allPosts={allPosts}
+          initialCount={10}
+          hasMore={hasMore}
+          total={total}
+        />
       </section>
     </div>
   );
