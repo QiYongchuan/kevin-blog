@@ -55,16 +55,19 @@ export default function RootLayout({
                 </Link>
                 <nav className="flex items-center gap-6">
                   <Link href="/" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
-                    文章
+                    Home
                   </Link>
                   <Link href="/thoughts" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
                     Thoughts
                   </Link>
                   <Link href="/projects" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
-                    项目
+                    Projects
+                  </Link>
+                  <Link href="/source" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+                    Source
                   </Link>
                   <Link href="/about" className="text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
-                    关于
+                    About
                   </Link>
                   <ThemeToggle />
                 </nav>

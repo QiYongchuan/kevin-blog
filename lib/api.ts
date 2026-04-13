@@ -22,6 +22,13 @@ interface GitHubIssue {
   labels: (string | GitHubLabel)[];
 }
 
+interface GitHubComment {
+  id: number;
+  body: string;
+  user: GitHubUser;
+  created_at: string;
+}
+
 // GitHub API 基础配置
 async function fetchGitHubAPI(url: string) {
   const headers: HeadersInit = {
@@ -55,9 +62,8 @@ export async function getAllPosts(): Promise<Post[]> {
 
     // 过滤逻辑：
     // 1. 作者自己创建的
-    // 2. 必须有 blog 标签才显示在首页
-    // 3. 不包含 hide/hidden 标签
-    // 4. 不包含 thought 标签（thought 只显示在 thoughts 页面）
+    // 2. 不包含 hidden/hide 标签
+    // 3. 不包含 thought 标签（thought 只显示在 thoughts 页面）
     const authorIssues = issues.filter((issue: GitHubIssue) => {
       if (!issue.user || issue.user.login !== REPO_OWNER) return false;
 
@@ -65,18 +71,13 @@ export async function getAllPosts(): Promise<Post[]> {
         typeof label === 'string' ? label : label.name
       ) || [];
 
-      // 排除 hide/hidden 标签
+      // 排除 hidden/hide 标签
       if (labels.some((l: string) => l.toLowerCase() === 'hide' || l.toLowerCase() === 'hidden')) {
         return false;
       }
 
       // 排除 thought 标签（只在 thoughts 页面显示）
       if (labels.some((l: string) => l.toLowerCase() === 'thought')) {
-        return false;
-      }
-
-      // 必须有 blog 标签才显示
-      if (!labels.some((l: string) => l.toLowerCase() === 'blog')) {
         return false;
       }
 
@@ -158,19 +159,47 @@ export async function getPostsPaginated(page: number = 1, pageSize: number = 10)
   }
 }
 
-// 获取单篇文章
-export async function getPostById(id: number): Promise<Post | null> {
+// 获取 Issue 评论
+async function getIssueComments(issueNumber: number): Promise<string[]> {
   try {
-    const issue = await fetchGitHubAPI(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${id}`
+    const comments = await fetchGitHubAPI(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${issueNumber}/comments`
     );
 
+    if (!comments || !Array.isArray(comments)) return [];
+
+    // 只返回作者自己的评论内容
+    return comments
+      .filter((comment: GitHubComment) => comment.user?.login === REPO_OWNER)
+      .map((comment: GitHubComment) => comment.body || '');
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    return [];
+  }
+}
+
+// 获取单篇文章（包含作者自己的评论）
+export async function getPostById(id: number): Promise<Post | null> {
+  try {
+    const [issue, authorComments] = await Promise.all([
+      fetchGitHubAPI(
+        `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${id}`
+      ),
+      getIssueComments(id),
+    ]);
+
     if (!issue) return null;
+
+    // 合并正文和作者自己的评论
+    let fullContent = issue.body || '';
+    if (authorComments.length > 0) {
+      fullContent += '\n\n---\n\n' + authorComments.join('\n\n---\n\n');
+    }
 
     return {
       id: issue.number,
       title: issue.title,
-      content: issue.body || '',
+      content: fullContent,
       created_at: issue.created_at,
       labels: issue.labels?.map((label: string | GitHubLabel) =>
         typeof label === 'string' ? label : label.name

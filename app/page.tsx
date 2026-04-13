@@ -16,14 +16,7 @@ export default async function Home() {
         </h1>
         <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl mx-auto">
           <p>
-            多多，90后，青岛，INFP，ADHD确诊者。
-          </p>
-          <p>
-            从985农学研究生退学，二学位转码成为程序员。
-            现全职自媒体 + 独立开发。
-          </p>
-          <p>
-            X 1.2w粉丝，全网1.8w+粉丝。
+            INFP+ADHD创作者，用AI当魔法棒的魔法师。
           </p>
           <p className="text-gray-400 dark:text-gray-500 italic">
             Build fast, share fast. 在废墟上重建意义。

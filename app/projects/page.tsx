@@ -7,7 +7,7 @@ import { Project, ProjectCategory } from '@/types';
 
 const categories: { value: ProjectCategory; label: string }[] = [
   { value: 'all', label: '全部' },
-  { value: 'commercial', label: '商单案例' },
+  { value: 'commercial', label: '品牌案例' },
   { value: 'personal', label: '个人作品' },
   { value: 'experiment', label: '实验项目' },
 ];
