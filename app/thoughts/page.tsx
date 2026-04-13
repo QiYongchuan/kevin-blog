@@ -1,5 +1,6 @@
 import { getAllThoughts } from "@/lib/api";
 import { formatDate } from "@/lib/utils";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 // ISR: 每10分钟重新生成页面
 export const revalidate = 600;
@@ -27,9 +28,7 @@ export default async function ThoughtsPage() {
             className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             <div className="prose dark:prose-invert max-w-none">
-              <div className="text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-wrap">
-                {thought.content}
-              </div>
+              <MarkdownRenderer content={thought.content} />
             </div>
             <time className="block mt-4 text-sm text-gray-400 dark:text-gray-500 text-right tabular-nums">
               {formatDate(thought.created_at)}
