@@ -1,13 +1,13 @@
 3:I[4707,[],""]
 5:I[6423,[],""]
 6:I[9294,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"Providers"]
-7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],""]
+7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],""]
 8:I[7683,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"default"]
 4:["id","141","d"]
-0:["HyWSEGd9zJxtZUWK0SfP2",[[["",{"children":["post",{"children":[["id","141","d"],{"children":["__PAGE__?{\"id\":\"141\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","141","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e9670b267c3c7602.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"文章"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"项目"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"关于"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
-a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
-c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
-b:T2080,### 前言：
+0:["pSXsSfy0WcU_WDvfyguag",[[["",{"children":["post",{"children":[["id","141","d"],{"children":["__PAGE__?{\"id\":\"141\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","141","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/a2c5bb38d5c412ef.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Home"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Projects"}],["$","$L7",null,{"href":"/source","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Source"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"About"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
+a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],"default"]
+c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],"default"]
+b:T3af0,### 前言：
 
 起因，最近经常刷到有推友 账号被封，其中一个重要原因就是，自己ip风险太高。
 
@@ -165,6 +165,87 @@ https://x.com/nopinduoduo/status/1996247729186779351
 
 https://x.com/nopinduoduo
 
-*1. 转载请保留原文链接谢谢！*2:["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回"]}],["$","header",null,{"className":"mb-12","children":[["$","h1",null,{"className":"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight","children":"纯小白无脑教程:如何将梯子绑定住宅静态IP,降低节点风险度"}],["$","div",null,{"className":"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500","children":[["$","time",null,{"className":"tabular-nums","children":"2025/12/04"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","notes",{"className":"text-gray-400 dark:text-gray-500","children":["#","notes"]}],["$","span","Top",{"className":"text-gray-400 dark:text-gray-500","children":["#","Top"]}]]}]]}]]}],["$","article",null,{"className":"prose dark:prose-invert max-w-none","children":["$","$La",null,{"content":"$b"}]}],["$","$Lc",null,{"postId":"141"}],["$","div",null,{"className":"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800","children":["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回首页"]}]}]]}]
+*1. 转载请保留原文链接谢谢！*
+
+---
+
+## 补充更新   可能更安全且便宜的方案
+（暂时没时间跑，及写教程，等后续有时间再来研究吧）
+
+<img width="822" height="796" alt="Image" src="https://github.com/user-attachments/assets/0a092540-dd00-4838-aad4-9b4b6767f130" />
+
+<img width="800" height="1074" alt="Image" src="https://github.com/user-attachments/assets/ce06275c-3aff-4af1-a892-c87f93835c1c" />
+
+原帖链接： https://x.com/Dave3Mush/status/1995919408779198635
+
+
+---
+
+> 编辑代理组那部分，前面的选择是relay，但是后面的截图里选择的都是select啊
+
+截图是我做教程的时候重新搞了一遍，有误，以文字版为准，应该是 relay才对的。
+
+---
+
+有新配了一个美区的ip：
+
+图一是  奶昔 测试 ；  图二是配置完成之后的效果
+
+<img width="1500" height="1199" alt="Image" src="https://github.com/user-attachments/assets/6e06f32e-c3cf-4293-92f6-d1986016b388" />
+
+<img width="1460" height="1016" alt="Image" src="https://github.com/user-attachments/assets/e52a7a84-0581-4d7a-b7b5-3c0267fc6ce1" />
+
+---
+
+> <img alt="Image" width="483" height="351" src="https://private-user-images.githubusercontent.com/236084622/523436791-c318cf40-f945-496e-a364-aea39051aa87.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUwOTQ0NDYsIm5iZiI6MTc2NTA5NDE0NiwicGF0aCI6Ii8yMzYwODQ2MjIvNTIzNDM2NzkxLWMzMThjZjQwLWY5NDUtNDk2ZS1hMzY0LWFlYTM5MDUxYWE4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QwNzU1NDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NjVhODQ0MTNkMzEyYjViZGJiNDNkM2QzMmZiNWU3YmI3MjUxZThlNjUzODhiZjIxMDQ4M2M0NGY0ZTI1NzU3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3UpebXniOS6nGSEvBASmDbGBMEz5l7CDSmSGnzvAAkM"> 编辑代理组之后，显示的是这个怎么办呢？
+
+给我截一下你引入代理那里是怎么设置的
+
+---
+
+> <img alt="Image" width="1174" height="911" src="https://private-user-images.githubusercontent.com/236084622/523438632-6ed28b51-61e1-46bb-8523-b9c5cd2845c4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUwOTUyNDEsIm5iZiI6MTc2NTA5NDk0MSwicGF0aCI6Ii8yMzYwODQ2MjIvNTIzNDM4NjMyLTZlZDI4YjUxLTYxZTEtNDZiYi04NTIzLWI5YzVjZDI4NDVjNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QwODA5MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNWVjZmE5MDQzZTJkMzRmODgyYzE5Mjk0MmYxOGZhMGIxZDRkZTJlYmQ4NjIyMGI1N2FlZGY0NjkyZmZhNTE5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.XgSvgXpF3JbbAUbBWjEINaQ3Ip1ymaCuWkGD6-TZS_0"> <img alt="Image" width="1176" height="904" src="https://private-user-images.githubusercontent.com/236084622/523438643-724d1c76-e81a-469a-9f38-ee3f3e04dcb3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUwOTUyNDEsIm5iZiI6MTc2NTA5NDk0MSwicGF0aCI6Ii8yMzYwODQ2MjIvNTIzNDM4NjQzLTcyNGQxYzc2LWU4MWEtNDY5YS05ZjM4LWVlM2YzZTA0ZGNiMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QwODA5MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YjliZDYzMDIwYWIwYjZhNDY3M2Y0OTBhODgyODY1NmQ3ZDFkZjJmNjA2ZjJhOTU2OWU3ODJmNjEzODI0ODIxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.znJz2kZFmBwhQDXpZWmzuaGuhaOYrsD3stMxWWSpQ30">
+
+咱俩clash 版本不一样，代理组类型 设置不支持了。 你换成别的试一试
+
+---
+
+
+
+> 所有的步骤都对了，但是最后用梯子的时候，静态IP一直是超时的，是买的静态IP出问题了吗？买的也是一样的
+
+有可能是静态ip配置那里有问题，再重新输入一下试试，注意英文符号，以及空格问题
+
+
+
+---
+
+> 所有的步骤都对了，但是最后用梯子的时候，静态IP一直是超时的，是买的静态IP出问题了吗？买的也是一样的
+我上传了我本地的版本，可以直接下载了
+https://github.com/QiYongchuan/Clash_verge_-
+
+---
+
+> > > <img alt="Image" width="54.47500228881836" height="21" src="https://private-user-images.githubusercontent.com/236084622/523438632-6ed28b51-61e1-46bb-8523-b9c5cd2845c4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUwOTUyNDEsIm5iZiI6MTc2NTA5NDk0MSwicGF0aCI6Ii8yMzYwODQ2MjIvNTIzNDM4NjMyLTZlZDI4YjUxLTYxZTEtNDZiYi04NTIzLWI5YzVjZDI4NDVjNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QwODA5MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNWVjZmE5MDQzZTJkMzRmODgyYzE5Mjk0MmYxOGZhMGIxZDRkZTJlYmQ4NjIyMGI1N2FlZGY0NjkyZmZhNTE5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.XgSvgXpF3JbbAUbBWjEINaQ3Ip1ymaCuWkGD6-TZS_0"> <img alt="Image" width="54.47500228881836" height="21" src="https://private-user-images.githubusercontent.com/236084622/523438643-724d1c76-e81a-469a-9f38-ee3f3e04dcb3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUwOTUyNDEsIm5iZiI6MTc2NTA5NDk0MSwicGF0aCI6Ii8yMzYwODQ2MjIvNTIzNDM4NjQzLTcyNGQxYzc2LWU4MWEtNDY5YS05ZjM4LWVlM2YzZTA0ZGNiMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QwODA5MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YjliZDYzMDIwYWIwYjZhNDY3M2Y0OTBhODgyODY1NmQ3ZDFkZjJmNjA2ZjJhOTU2OWU3ODJmNjEzODI0ODIxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.znJz2kZFmBwhQDXpZWmzuaGuhaOYrsD3stMxWWSpQ30">
+> > 
+> > 
+> > 咱俩clash 版本不一样，代理组类型 设置不支持了。 你换成别的试一试
+> 
+> 我也碰到相同问题了，问了下Ai，说是clash verge 在1.18.6后就废除了relay类型，低于这个版本才能用那个教程
+
+我上传了我本地的版本，可以直接下载了
+https://github.com/QiYongchuan/Clash_verge_-
+
+---
+
+更新：配置完之后如果无法连接通过的，修改一下 【3.2 编辑代理组】 中这一步
+改成 select
+
+<img width="670" height="422" alt="Image" src="https://github.com/user-attachments/assets/cf111e3d-6cf1-40a1-831b-65405d83f826" />
+
+---
+
+> 完全没用，下载了博主给的安装包也不行，浪费了20多。。。
+
+改一下代理组的，代理组类型，选 select 试一下2:["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回"]}],["$","header",null,{"className":"mb-12","children":[["$","h1",null,{"className":"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight","children":"纯小白无脑教程:如何将梯子绑定住宅静态IP,降低节点风险度"}],["$","div",null,{"className":"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500","children":[["$","time",null,{"className":"tabular-nums","children":"2025/12/04"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","notes",{"className":"text-gray-400 dark:text-gray-500","children":["#","notes"]}],["$","span","Top",{"className":"text-gray-400 dark:text-gray-500","children":["#","Top"]}]]}]]}]]}],["$","article",null,{"className":"prose dark:prose-invert max-w-none","children":["$","$La",null,{"content":"$b"}]}],["$","$Lc",null,{"postId":"141"}],["$","div",null,{"className":"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800","children":["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回首页"]}]}]]}]
 9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"纯小白无脑教程:如何将梯子绑定住宅静态IP,降低节点风险度 - Kevin's Blog"}],["$","meta","3",{"name":"description","content":"Build fast, share fast. 独立开发者、自媒体人、AI魔法师。"}],["$","link","4",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
 1:null

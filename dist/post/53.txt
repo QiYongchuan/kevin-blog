@@ -1,12 +1,155 @@
 3:I[4707,[],""]
 5:I[6423,[],""]
 6:I[9294,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"Providers"]
-7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],""]
+7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],""]
 8:I[7683,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"default"]
 4:["id","53","d"]
-0:["HyWSEGd9zJxtZUWK0SfP2",[[["",{"children":["post",{"children":[["id","53","d"],{"children":["__PAGE__?{\"id\":\"53\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","53","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e9670b267c3c7602.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"文章"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"项目"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"关于"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
-a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
-b:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
-2:["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回"]}],["$","header",null,{"className":"mb-12","children":[["$","h1",null,{"className":"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight","children":"算法设计与分析期末复习"}],["$","div",null,{"className":"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500","children":[["$","time",null,{"className":"tabular-nums","children":"2023/12/29"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","notes",{"className":"text-gray-400 dark:text-gray-500","children":["#","notes"]}]]}]]}]]}],["$","article",null,{"className":"prose dark:prose-invert max-w-none","children":["$","$La",null,{"content":"\r\n![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/08f3d82d-c418-4131-bc28-1910499e4110)\r\n\r\n\r\n![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/eef1bd18-3732-4484-9342-0a9bfdbd9a9c)\r\n"}]}],["$","$Lb",null,{"postId":"53"}],["$","div",null,{"className":"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800","children":["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回首页"]}]}]]}]
+0:["pSXsSfy0WcU_WDvfyguag",[[["",{"children":["post",{"children":[["id","53","d"],{"children":["__PAGE__?{\"id\":\"53\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","53","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/a2c5bb38d5c412ef.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Home"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Projects"}],["$","$L7",null,{"href":"/source","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Source"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"About"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
+a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],"default"]
+c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],"default"]
+b:T186f,
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/08f3d82d-c418-4131-bc28-1910499e4110)
+
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/eef1bd18-3732-4484-9342-0a9bfdbd9a9c)
+
+
+---
+
+### 0.基础知识补充部分
+_ps：不是针对具体哪个考试题，直接针对做题的，仅是用来学习一些基本的概念补充_
+
+#### 0.1 时间复杂度计算
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/5ad0fbdf-62a5-416e-8c8a-4709ba22ac93)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/d4382161-fd8c-4ba3-b5c6-ef5d393d2a9c)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/92301796-a20c-4c3b-94d6-3735bb8a2259)
+
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/ab7f39bf-76b6-4645-b828-5a228b3aac35)
+
+**注：区别在于常数阶的size是输入确定好的值，而线性阶是可以一直增加的。**
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/4f406af5-9df2-4c80-9489-c57c6bc82a0c)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/984debfa-06fd-4d14-adcf-1fb740ecdbea)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/0f1e4b1d-09ee-4e6b-9775-9bfc418d152f)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/a7a37c28-a86f-4681-aa71-dfe768cfc8cb)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/e6049cf8-2161-490e-ac05-fae71f182279)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/d05ace8a-dea1-480a-8c72-f1d9245b6c2b)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/f1ef449d-a5e6-44dd-961f-c86099b76540)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/8567653f-2e89-4c11-810a-f84c5ee31a3c)
+
+
+来源：[hello 算法](https://www.hello-algo.com/chapter_computational_complexity/time_complexity/#6-on-log-n) 
+
+---
+
+## 一、分治法
+涉及到的算法：二分搜索、合并排序、快速排序
+
+例子：把作业分成一个一个的小部分，一个人做一部分？然后再整合到一块。
+
+思想：  分(Divide)，治(Conquer)，合(Combine)。
+
+（1）分解成若干个规模较小、相互独立、类型相同的子问题
+（2）子问题足够小时，直接分解
+（3）子问题的解，组合成原问题
+
+
+
+### 最大字段和问题
+#### 1. 枚举法解决问题
+#### 2. 分治法解决方案
+#### 3. 动态规划解决方案
+
+> 
+问题描述：
+当所有整数都是负数时，记为0
+当（a1,a2,a3,a4,a5,a6)=(-2,11--4,13,-5,-2)时，最大字段和
+
+
+**1.枚举法（蛮力、暴力、穷举)**
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/71c80e25-35ab-4094-b80c-9cb73070aade)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/59884286-ae06-46ea-b5ea-83b560fefd85)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/7db91242-6080-4b62-85e3-51651d51d19d)
+
+**穷举法就是将n中所有的字段组合找出来，比较字段的和的大小，选出最大的来。**
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/4d0021f7-3460-4399-98cd-8188c654cd3a)
+
+枚举法的优化：可将复杂度降为n²
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/f7ea3365-a8ee-4dcf-9217-139a497bca94)
+
+**2.分治法求最大字段和**
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/cb46ecfb-03db-4f08-98da-72b1f490fd18)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/b414fb67-216a-4e1d-9879-54513ffc3307)
+
+代码部分：
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/2f0c55b3-92ca-4485-b0dc-04b7b261d485)
+
+> 来源：[算法设计与分析MOOC-青岛大学-张公敬教授](https://www.bilibili.com/video/BV18X4y1k74c?p=28&vd_source=c3c4a5db9e4d968c67a652118ea87497)
+
+注意：这里的left和right是数组的两个端点，区分lefts和rights数组的和
+
+**3.动态规划法求最大字段和**
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/99bba5ea-d8e0-4919-807a-90ba791fd798)
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/e5ca0b96-878e-4f40-b564-2f0b012beb9c)
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/a36cbd58-35c9-4376-896d-a4e05c2b05fe)
+
+[【北大公开课】 算法设计与分析 屈婉玲教授 （76p）](https://www.bilibili.com/video/BV1Ls411W7PB?p=45&vd_source=c3c4a5db9e4d968c67a652118ea87497)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/7510b2cd-56b6-4d3b-898b-27e6f8fcc569)
+
+老师讲义：
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/847ae645-6071-4dd3-b648-f27b8cb3ef38)
+
+**蛮力、分治与动态规划求解最大字段和问题的比较：**
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/653fc1e0-2d86-4416-8952-63374618ad07)
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/bd78fbf8-a403-4ec1-b86d-63b55869756e)
+
+
+---
+
+### 0/1背包问题
+
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/ab134a3a-ef39-46ff-a4b2-6a2b0b60ecc5)
+
+条件约束：
+
+小于总重量
+
+核心：
+最优子结构性质分析
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/79bbedd8-114a-4e4c-8380-a67c6c28a61d)
+当第i个物体的重量超过背包总重量时，此时第i个装不进去，此时背包的最大价值就是第[i-1]个物体装入时的最大价值；
+当第i个物体的重量不超过背包的总重量，可以装入背包时，**此时可装可不装。**
+
+---
+
+#### 学习通试题及答案
+
+
+---
+
+
+考试前发疯belike：
+
+五大算法，缺一不可！！！！！！
+![image](https://github.com/QiYongchuan/MyGitBlog/assets/105039020/8065bb4a-8505-428c-a6b0-e2c0825074b5)
+
+
+---
+
+> 后续：考完了，但是资料还没有整理完的，暂时先将用到的pdf传到这里吧：
+
+[笔记.pdf](https://github.com/QiYongchuan/MyGitBlog/files/13852573/default.pdf)
+[复习2+重点回顾.pdf](https://github.com/QiYongchuan/MyGitBlog/files/13852574/2%2B.pdf)
+以及最后的模拟题：
+[考试题.pdf](https://github.com/QiYongchuan/MyGitBlog/files/13852575/default.pdf)
+
+2:["$","div",null,{"className":"max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":[["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 mb-12 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回"]}],["$","header",null,{"className":"mb-12","children":[["$","h1",null,{"className":"text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100 leading-tight","children":"算法设计与分析期末复习"}],["$","div",null,{"className":"flex items-center gap-4 text-sm text-gray-400 dark:text-gray-500","children":[["$","time",null,{"className":"tabular-nums","children":"2023/12/29"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","notes",{"className":"text-gray-400 dark:text-gray-500","children":["#","notes"]}]]}]]}]]}],["$","article",null,{"className":"prose dark:prose-invert max-w-none","children":["$","$La",null,{"content":"$b"}]}],["$","$Lc",null,{"postId":"53"}],["$","div",null,{"className":"mt-16 pt-8 border-t border-gray-200 dark:border-gray-800","children":["$","$L7",null,{"href":"/","className":"inline-flex items-center text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-400 transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-1","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"返回首页"]}]}]]}]
 9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"算法设计与分析期末复习 - Kevin's Blog"}],["$","meta","3",{"name":"description","content":"Build fast, share fast. 独立开发者、自媒体人、AI魔法师。"}],["$","link","4",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
 1:null

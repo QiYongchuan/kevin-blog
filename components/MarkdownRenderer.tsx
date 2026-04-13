@@ -10,14 +10,30 @@ interface MarkdownRendererProps {
   content: string;
 }
 
+// 解码 Unicode 转义序列（如 \\u003e -> >）
+function decodeUnicode(str: string): string {
+  return str.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+}
+
 // 将 HTML <img> 标签转换为 Markdown 格式
 function preprocessContent(content: string): string {
-  // 匹配 <img src="..." alt="..." width="..." height="..." /> 格式
-  const imgRegex = /<img[^>]+src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*\/?>/gi;
+  // 首先解码 Unicode 转义
+  let processed = decodeUnicode(content);
 
-  return content.replace(imgRegex, (match, src, alt) => {
+  // 匹配 <img src="..." alt="..." width="..." height="..." /> 格式
+  const imgRegex = /<img[^>]+src=["']([^"']+)["'][^>]*alt=["']([^"]*)["'][^>]*\/?>/gi;
+
+  processed = processed.replace(imgRegex, (match, src, alt) => {
     return `![${alt || 'image'}](${src})`;
   });
+
+  // 修复引用块格式：确保 > 后面有空格
+  processed = processed.replace(/^>([^\s>])/gm, '> $1');
+
+  // 处理 HTML 实体形式的引用块
+  processed = processed.replace(/^&gt;\s*/gm, '> ');
+
+  return processed;
 }
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {

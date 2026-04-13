@@ -1,13 +1,13 @@
 3:I[4707,[],""]
 5:I[6423,[],""]
 6:I[9294,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"Providers"]
-7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],""]
+7:I[2972,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],""]
 8:I[7683,["972","static/chunks/972-66d51a7cc4f97c94.js","185","static/chunks/app/layout-38aa4a181ad2d773.js"],"default"]
 4:["id","99","d"]
-0:["HyWSEGd9zJxtZUWK0SfP2",[[["",{"children":["post",{"children":[["id","99","d"],{"children":["__PAGE__?{\"id\":\"99\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","99","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e9670b267c3c7602.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"文章"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"项目"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"关于"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
-a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
-c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-d539675d117d5f45.js"],"default"]
-b:T107c,```
+0:["pSXsSfy0WcU_WDvfyguag",[[["",{"children":["post",{"children":[["id","99","d"],{"children":["__PAGE__?{\"id\":\"99\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["post",{"children":[["id","99","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","post","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/a2c5bb38d5c412ef.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0CW52HXX9M"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-0CW52HXX9M');\n            "}}]]}],["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100","children":["$","$L6",null,{"children":["$","div",null,{"className":"min-h-screen flex flex-col","children":[["$","header",null,{"className":"border-b border-gray-200 dark:border-gray-800","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between","children":[["$","$L7",null,{"href":"/","className":"text-xl font-semibold hover:opacity-70 transition-opacity","children":"多多"}],["$","nav",null,{"className":"flex items-center gap-6","children":[["$","$L7",null,{"href":"/","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Home"}],["$","$L7",null,{"href":"/thoughts","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Thoughts"}],["$","$L7",null,{"href":"/projects","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Projects"}],["$","$L7",null,{"href":"/source","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"Source"}],["$","$L7",null,{"href":"/about","className":"text-sm hover:text-gray-600 dark:hover:text-gray-400 transition-colors","children":"About"}],["$","$L8",null,{}]]}]]}]}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"border-t border-gray-200 dark:border-gray-800 py-8","children":["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400","children":["$","p",null,{"children":"© 2025 多多. Build fast, share fast."}]}]}]]}]}]}]]}]],null],null],["$L9",null]]]]
+a:I[8172,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],"default"]
+c:I[1255,["972","static/chunks/972-66d51a7cc4f97c94.js","196","static/chunks/196-f2bfcbb86a691470.js","246","static/chunks/app/post/%5Bid%5D/page-79a38d1d71a9ff3e.js"],"default"]
+b:T2207,```
 package nc.bs.einvoice.util;
 
 import com.alibaba.fastjson.JSON;
@@ -92,6 +92,118 @@ public class OpenApiUtil {
     	        return JSON.parseObject(jsonResponse);
     	    } else if (statusCode == 400) {
     	        JSONObject errorResponse = JSON.parseObject(jsonResponse.toString());
+    	        String errorMessage = errorResponse.getString("message");
+    	        if (errorMessage == null) {
+    	            errorMessage = "Unknown error";
+    	        }
+    	        String status = errorResponse.getString("status");
+    	        if (status == null) {
+    	            status = "Unknown status";
+    	        }
+    	        JSONObject errors = errorResponse.getJSONObject("errors");
+    	        throw new BusinessException("Status: " + status + "\nError from API: " + errorMessage + "  \nDetails: " + errors);
+    	    } else {
+    	        // 对其他错误状态码的处理可以类似地扩展
+    	        throw new BusinessException("HTTP请求失败: 状态码 " + statusCode);
+    	    }
+    	}
+    }
+```
+
+---
+
+非泛型，仅支持返回json object类型的方法
+```
+package nc.bs.einvoice.util;
+
+//import com.alibaba.fastjson.JSON;
+//import com.alibaba.fastjson.JSONObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import nc.vo.pub.BusinessException;
+
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.util.Map;
+
+
+public class OpenApiUtil {
+
+    private static CloseableHttpClient httpClient = HttpClients.createDefault();
+
+    /**
+     * 执行GET请求并返回指定类型的响应。
+     * @throws BusinessException 
+     */
+    public static JSONObject doGet(String url, Map<String, String> headers) throws BusinessException {  
+        HttpGet httpGet = new HttpGet(url);  
+        if (headers != null) {  
+            headers.forEach(httpGet::addHeader);  
+        }  
+      
+        try (CloseableHttpResponse response = httpClient.execute(httpGet)) {  
+            JSONObject jsonObject = handleResponse(response);  
+            return   jsonObject;
+        } catch (IOException | BusinessException | JSONException e) {  
+            throw new BusinessException("执行GET请求失败", e);  
+        }  
+    } 
+
+    /**
+     * 执行POST请求，发送JSON数据，并返回指定类型的响应。
+     * @throws BusinessException 
+     */
+    public static JSONObject doPost(String url, Map<String, Object> payload, Map<String, String> headers) throws BusinessException {  
+        HttpPost httpPost = new HttpPost(url);    
+        JSONObject jsonObject = new JSONObject(payload); // 直接将Map转换为JSONObject  
+        StringEntity entity = new StringEntity(jsonObject.toString(), "UTF-8");  
+        httpPost.setEntity(entity);  
+        httpPost.setHeader("Content-Type", "application/json");  
+        if (headers != null) {  
+            headers.forEach(httpPost::addHeader);  
+        }  
+      
+        try (CloseableHttpResponse response = httpClient.execute(httpPost)) {  
+            JSONObject jsonObjectRes = handleResponse(response);  
+            return jsonObjectRes;  
+        } catch (IOException | BusinessException | JSONException e) {  
+            throw new BusinessException("执行POST请求失败", e);  
+        }  
+    }
+
+    /**
+     * 处理HTTP响应的通用逻辑。
+     * @throws BusinessException 
+     * @throws JSONException 
+     */
+    private static JSONObject handleResponse(CloseableHttpResponse response) throws  BusinessException, JSONException {  
+	        int statusCode;
+	        String jsonResponse;
+	    	try {
+	    		 statusCode = response.getStatusLine().getStatusCode();
+	    	     jsonResponse = EntityUtils.toString(response.getEntity());
+	    		} catch (IOException e) {
+	    	        // 捕获 IOException 并重新抛出为 BusinessException
+	    	        throw new BusinessException("网络请求失败: " + e.getMessage(), e);
+	    	    }
+    	
+    	    if (statusCode >= 200 && statusCode <= 300) {
+    	        if (statusCode == HttpStatus.SC_NO_CONTENT) {
+    	            return new JSONObject(); // 或者返回null，具体取决于业务逻辑
+    	        }
+    	        return new JSONObject(jsonResponse);
+    	    } else if (statusCode == 400) {
+    	        JSONObject errorResponse = new JSONObject(jsonResponse.toString());
     	        String errorMessage = errorResponse.getString("message");
     	        if (errorMessage == null) {
     	            errorMessage = "Unknown error";

@@ -29,6 +29,11 @@ interface GitHubComment {
   created_at: string;
 }
 
+// 解码 Unicode 转义序列（如 \\u003e -> >）
+function decodeUnicode(str: string): string {
+  return str.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+}
+
 // GitHub API 基础配置
 async function fetchGitHubAPI(url: string) {
   const headers: HeadersInit = {
@@ -86,8 +91,8 @@ export async function getAllPosts(): Promise<Post[]> {
 
     const posts: Post[] = authorIssues.map((issue: GitHubIssue) => ({
       id: issue.number,
-      title: issue.title,
-      content: issue.body || '',
+      title: decodeUnicode(issue.title),
+      content: decodeUnicode(issue.body || ''),
       created_at: issue.created_at,
       labels: issue.labels?.map((label: string | GitHubLabel) =>
         typeof label === 'string' ? label : label.name
@@ -135,8 +140,8 @@ export async function getPostsPaginated(page: number = 1, pageSize: number = 10)
 
     const sortedPosts = authorIssues.map((issue: GitHubIssue) => ({
       id: issue.number,
-      title: issue.title,
-      content: issue.body || '',
+      title: decodeUnicode(issue.title),
+      content: decodeUnicode(issue.body || ''),
       created_at: issue.created_at,
       labels: issue.labels?.map((label: string | GitHubLabel) =>
         typeof label === 'string' ? label : label.name
@@ -171,7 +176,7 @@ async function getIssueComments(issueNumber: number): Promise<string[]> {
     // 只返回作者自己的评论内容
     return comments
       .filter((comment: GitHubComment) => comment.user?.login === REPO_OWNER)
-      .map((comment: GitHubComment) => comment.body || '');
+      .map((comment: GitHubComment) => decodeUnicode(comment.body || ''));
   } catch (error) {
     console.error('Error fetching comments:', error);
     return [];
@@ -191,14 +196,14 @@ export async function getPostById(id: number): Promise<Post | null> {
     if (!issue) return null;
 
     // 合并正文和作者自己的评论
-    let fullContent = issue.body || '';
+    let fullContent = decodeUnicode(issue.body || '');
     if (authorComments.length > 0) {
       fullContent += '\n\n---\n\n' + authorComments.join('\n\n---\n\n');
     }
 
     return {
       id: issue.number,
-      title: issue.title,
+      title: decodeUnicode(issue.title),
       content: fullContent,
       created_at: issue.created_at,
       labels: issue.labels?.map((label: string | GitHubLabel) =>
@@ -356,7 +361,7 @@ export async function getAllThoughts(): Promise<Thought[]> {
 
     const thoughts: Thought[] = issues.map((issue: GitHubIssue) => ({
       id: String(issue.number),
-      content: issue.body || issue.title,
+      content: decodeUnicode(issue.body || issue.title),
       created_at: issue.created_at,
     }));
 
